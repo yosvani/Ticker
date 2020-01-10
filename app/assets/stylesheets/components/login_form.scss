@@ -1,0 +1,90 @@
+body {
+  margin:0;
+  min-width: 1000px;
+}
+
+.session-form {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.session-form img {
+  width: 50%;
+}
+
+.session-form-content {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+  margin-bottom: 100px;
+  background-color: white;
+}
+
+.session-form-text {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.session-input {
+  height: 16px;
+  width: 375px;
+  border-radius: 8px;
+  border: solid 1px;
+  border-color: #FAFAFA;
+  background: #FAFAFA;
+  padding: 15px 20px;
+  margin: 10px 0;
+  font-size: 13px;
+  font-weight: 400px;
+}
+
+.session-submit {
+  background-color: #21ce99;
+  border-color: #21ce99;
+  border-radius: 8px;
+  color: white;
+  font-size: 13px;
+  width: 140px;
+  height: 50px;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.session-demo {
+  background-color: #21ce99;
+  border-color: #21ce99;
+  border-radius: 8px;
+  color: white;
+  font-size: 13px;
+  width: 140px;
+  height: 50px;
+  padding: 0;
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+.session-input:hover {
+  border: solid 1px;
+  border-color: lightgrey;
+}
+
+.session-input:focus {
+  border: solid 1px;
+  border-color: #21ce99;
+  outline: none;
+}
+
+.session-form h2 {
+  margin-top: 10px;
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: 500;
+}
