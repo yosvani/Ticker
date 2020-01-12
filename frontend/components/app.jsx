@@ -9,10 +9,11 @@ import {
 } from 'react-router-dom';
 
 
-import SignUpFormContainer from './session_form/signup_form_container';
-import LogInFormContainer from './session_form/login_form_container';
 import NavBarContainer from './home/nav_bar/nav_bar_container';
 import Splash from './home/nav_bar/splash';
+import LogInFormContainer from './session_form/login_form_container';
+import SignUpFormContainer from './session_form/signup_form_container';
+import StockShow from './stocks/stock';
 
 import { AuthRoute, ProtectedRoute } from '../util/route.util';
 
@@ -26,6 +27,7 @@ const App = () => (
       <AuthRoute exact path='/' component={Splash} />;
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+      <AuthRoute exact path='/stocks' component={StockShow} />
     </Switch>
   </div>
 );

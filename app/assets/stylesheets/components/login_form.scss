@@ -79,7 +79,7 @@ body {
 .session-input:focus {
   border: solid 1px;
   border-color: #21ce99;
-  outline: none;
+  outline: none !important;
 }
 
 .session-form h2 {
