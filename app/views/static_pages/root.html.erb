@@ -1,1 +1,20 @@
+<% if logged_in? %>
+  <script type="text/javascript">
+    window.currentUser = <%= render(
+      "api/users/user.json.jbuilder",
+      user: current_user
+    ).html_safe %>
+  </script>
+<% end %>
+
+<script type="text/javascript">
+  window.images = {
+    logo: "<%= image_url('logo.png') %>",
+    splash: "<%= image_url('splash.png') %>",
+    login: "<%= image_url('login.png') %>",
+    error: "<%= image_url('error.jpg') %>",
+    signup: "<%= image_url('signup.mp4') %>",
+  }
+</script>
+
 <div id="root"></div>

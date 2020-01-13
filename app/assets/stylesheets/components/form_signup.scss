@@ -1,0 +1,250 @@
+.signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  // right: 0;
+  // height: 100vh;
+  // width: 100%;
+}
+
+.signup-inner {
+  padding-top: 10%;
+    max-height: 80%;
+    // position: absolute;
+    // top: 20%;
+    // left: 15%;
+    text-align: left;
+    max-width: 80%
+}
+
+.signup-inner > h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 45px;
+}
+.signup-inner > p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+}
+
+#signup-box {
+    font-size: 15px;
+    width: 650px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid rgb(199,199,199);
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    outline: none;
+    background-color: white;
+    border-radius: 6px;
+}
+
+
+#signup-box:focus {
+    border: 1px solid #21CE99;
+    background: white;
+}
+
+.signup-cont {
+    margin-top: 13px;
+    background-color: #21CE99;
+    color:white;
+    width: 650px;
+    padding: 13px 15px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.signup-cont:hover {
+    background-color: rgb(49, 175, 137);
+}
+
+.signup-demo {
+    margin-top: 13px;
+    background-color: #21CE99;
+    color:white;
+    width: 650px;
+    padding: 13px 15px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.signup-demo:hover {
+    background-color: rgb(49, 175, 137);
+}
+
+.signup-form ul li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+  font-family: sans-serif;
+}
+
+.signup-form ul li img {
+  display: inline-block;
+  height: 17px;
+  width: auto;
+  margin-right: 5px;
+}
+
+
+
+
+
+// body {
+//   margin:0;
+//   min-width: 1000px;
+// }
+
+// .signup-form {
+//   height: 100vh;
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   font-family: sans-serif;
+//   letter-spacing: 0.2px;
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+// }
+
+
+// .signup-form-content {
+//   width: 60%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   justify-content: space-between;
+//   padding: 50px;
+//   background-color: white;
+//   padding-left: 15%;
+//   padding-top: 10%;
+//   padding-bottom: 10%;
+// }
+
+// .signup-form-animation {
+//   width: 40%;
+//   padding-right: 15%;
+// }
+
+// .signup-name {
+//   // display: flex;
+//   width: 100%;
+//   justify-content: space-between;
+// }
+
+// // .signup-name-first {
+// //   width: 50%
+// // }
+
+// .signup-name-last {
+//   width: 50%;
+//   align-content: flex-end;
+// }
+
+// .signup-email {
+//   width: 100%;
+// }
+
+// .signup-password {
+//   width: 100%;
+// }
+
+
+// // .signup-form-text {
+// //   font-size: 13px;
+// //   font-weight: 400;
+// // }
+
+// // .signup-input {
+// //   height: 16px;
+// //   width: 375px;
+// //   border-radius: 8px;
+// //   border: solid 1px;
+// //   border-color: #FAFAFA;
+// //   background: #FAFAFA;
+// //   padding: 15px 20px;
+// //   margin: 10px 0;
+// //   font-size: 13px;
+// //   font-weight: 400px;
+// // }
+
+// // .signup-submit {
+// //   background-color: #21ce99;
+// //   border-color: #21ce99;
+// //   border-radius: 8px;
+// //   color: white;
+// //   font-size: 13px;
+// //   width: 140px;
+// //   height: 50px;
+// //   padding: 0;
+// //   margin-top: 50px;
+// // }
+
+// // .signup-demo {
+// //   background-color: #21ce99;
+// //   border-color: #21ce99;
+// //   border-radius: 8px;
+// //   color: white;
+// //   font-size: 13px;
+// //   width: 140px;
+// //   height: 50px;
+// //   padding: 0;
+// //   margin-top: 50px;
+// //   margin-left: 5px;
+// // }
+
+// // .signup-form a {
+// //   display: inline-block;
+// //   color: #21ce99;
+// //   text-decoration: none;
+// //   font-family: sans-serif;
+// //   font-size: 13px;
+// //   font-weight: 600;
+// //   letter-spacing: 0.2px;
+// //   margin-top: 10px;
+// //   margin-bottom: 10px;
+// // }
+
+// // .signup-input:hover {
+// //   border: solid 1px;
+// //   border-color: lightgrey;
+// // }
+
+// // .signup-input:focus {
+// //   border: solid 1px;
+// //   border-color: #21ce99;
+// //   outline: none !important;
+// // }
+
+// // .signup-form h2 {
+// //   margin-top: 10px;
+// //   margin-bottom: 25px;
+// //   font-size: 26px;
+// //   font-weight: 600;
+// // }
+
+// // .signup-form ul li {
+// //   display: flex;
+// //   justify-content: flex-start;
+// //   align-items: center;
+// //   margin-top: 10px;
+// // }
+
+// // .signup-form ul li img {
+// //   display: inline-block;
+// //   height: 17px;
+// //   width: auto;
+// //   margin-right: 5px;
+// // }
