@@ -5,7 +5,6 @@ import StockShow from './stock_show';
 
 const mapStateToProps = (state, ownProps) => ({
   ticker: ownProps.match.params.ticker
-
 });
 
 const mapDispatchToProps = dispatch => ({

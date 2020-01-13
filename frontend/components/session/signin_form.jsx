@@ -31,8 +31,8 @@ class SignInForm extends React.Component {
   handleDemo(e) {
     e.preventDefault();
     const user = Object.assign({}, {
-      email: 'demo@gmail.com',
-      password: 'demo123'
+      email: 'georgesoros',
+      password: 'password'
     });
     this.demo(user);
   }
