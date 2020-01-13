@@ -28,14 +28,14 @@ class SignUpForm extends React.Component {
     this.props.signup(user);
   }
 
-  // handleDemo(e) {
-  //   e.preventDefault();
-  //   const user = Object.assign({}, {
-  //     email: 'georgesoros',
-  //     password: 'password'
-  //   });
-  //   this.demo(user);
-  // }
+  handleDemo(e) {
+    e.preventDefault();
+    const user = Object.assign({}, {
+      email: 'georgesoros',
+      password: 'password'
+    });
+    this.demo(user);
+  }
 
   renderErrors() {
     return (

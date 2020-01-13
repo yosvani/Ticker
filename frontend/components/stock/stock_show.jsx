@@ -4,34 +4,18 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 
 class StockShow extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   
+  render() {
+    let stock = this.props.fetchStock(this.props.ticker);
 
-  // renderStock() {
-  //   return (
-  //     <div>
-  //       {this.props.fetchStock('aapl').map(element => (
-  //         <li>{element}</li>
-  //       ))}
-  //     </div>
-  //   )
-  // }
-    
-  // render() {
-  //   return (
-  //     <div>
-  //       {this.renderStock()}
-  //     </div>
-  //   )
-  // } 
+    return (
+      <div>
+        {stock}
+      </div>
+    )
+  } 
 
 };
-
-
-
 
 export default StockShow;
 
@@ -51,3 +35,5 @@ export default StockShow;
 //       <YAxis />
 //     </LineChart> */}
 //     <p>stock show page</p>
+
+// b6b93f080132789cab0798b730b832fa
