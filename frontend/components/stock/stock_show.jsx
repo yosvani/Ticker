@@ -1,39 +1,67 @@
 import React from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
 
 
 class StockShow extends React.Component {
+  componentDidMount() {
+    this.props.fetchCompanyInfo(this.props.ticker);
+    this.props.fetchStocks1y(this.props.ticker);
+  }
   
   render() {
-    let stock = this.props.fetchStock(this.props.ticker);
-
+    if (!this.props.company && !this.props.oneYear) return null; //render, componentidmount, render
+    
+    const data = [
+      { name: 'Page A', uv: 400 },
+      { name: 'Page B', uv: 500 },
+      { name: 'Page C', uv: 600 },
+      { name: 'Page D', uv: 700 },
+      { name: 'Page E', uv: 800 },
+    ];
+    
+    // console.log(this.props.oneYear, 'symbol')
+    // setTimeout(() => console.log(this.props.company.symbol, 'props'), 1000);
+    
     return (
       <div>
-        {stock}
+          
+        <div>
+          <LineChart width={600} height={300} data={this.props.oneYear} 
+            margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+            <Line type="linear" dataKey="close" dot={false} strokeWidth={2} />
+            {/* <CartesianGrid stroke="#ccc" strokeDasharray="5 5" /> */}
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+          </LineChart>
+        </div>
+
+        <div className='company-data'>
+          <p>Symbol</p>{this.props.company.symbol}<br /><br />
+          <p>Employees</p>{this.props.company.companyName}<br /><br />
+          <p>Headquarters:</p>{this.props.company.city}<br /><br />
+          <p>Founded:</p>{this.props.company.symbol}<br /><br />
+          <p>Market Cap</p>{this.props.company.symbol}<br /><br />
+          <p>Price-earnings Ratio</p>{this.props.company.symbol}<br /><br />
+          <p>Dividen Yield</p>{this.props.company.symbol}<br /><br />
+          <p>Average Volume</p>{this.props.company.symbol}<br /><br /> 
+        </div> 
+
+        <div className = 'articles'>
+          <div className='image'> 
+          
+          </div>
+          <div className='description'> 
+
+          </div>
+        </div>
+
       </div>
     )
   } 
-
 };
+
 
 export default StockShow;
 
-
-// const data = [
-//   { price: 'Page A', uv: 400, pv: 2400, amt: 2400 },
-//   { price: 'Page B', uv: 500, pv: 2500, amt: 2500 },
-//   { price: 'Page C', uv: 600, pv: 2600, amt: 2600 },
-//   { price: 'Page D', uv: 700, pv: 2700, amt: 2700 },
-//   { price: 'Page E', uv: 800, pv: 2800, amt: 2800 }
-// ];
-
-//     {/* <LineChart width={675} height={195} data={data}>
-//       <Line type="linear" dataKey="uv" stroke="#8884d8" />
-//       <CartesianGrid stroke="#ccc" />
-//       <XAxis dataKey="price" />
-//       <YAxis />
-//     </LineChart> */}
-//     <p>stock show page</p>
-
-// b6b93f080132789cab0798b730b832fa
