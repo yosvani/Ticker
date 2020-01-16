@@ -1,6 +1,7 @@
 import { 
   RECEIVE_COMPANY_INFO,
-  RECEIVE_STOCKS_1Y
+  RECEIVE_STOCKS_1Y,
+  RECEIVE_INTRADAY
 } from '../actions/stock_actions';
 
 
@@ -15,6 +16,9 @@ const stocksReducer = (state = {}, action) => {
       return nextState;
     case RECEIVE_STOCKS_1Y:
       nextState['oneYear'] = action.stock;
+      return nextState;
+    case RECEIVE_INTRADAY:
+      nextState['intraday'] = action.stock;
       return nextState;
     default:
       return state;

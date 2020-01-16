@@ -1,0 +1,52 @@
+.articles h1 {
+  font-size: 26px;
+  font-family: sans-serif;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f4f4f5;
+  width: 680px;
+  font-weight: 600;
+}
+
+.articles-list-item {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  // height: 195px;
+  width: 680px;
+  font-family: sans-serif;
+  text-decoration: none;
+}
+
+.articles-list-item:hover {
+  cursor: pointer;
+  background-color: #FAFAFA; 
+}
+
+.articles-text {
+  text-decoration: none;
+  height: 135px;
+  width: 485px;
+}
+
+.articles-text h4 {
+  text-decoration: none;
+  color: black;
+  font-size: 13px;
+}
+
+.articles-text h3 {
+  text-decoration: none;
+  color: black;
+}
+
+.articles-text p {
+  text-decoration: none;
+  color: grey;
+  font-size: 13px;
+}
+
+.articles img {
+  height: 135px;
+  width: 195px;
+}
