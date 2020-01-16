@@ -16,11 +16,14 @@ body {
   z-index: -1;
 }
 
-.default-navbar img {
-  height: 35px;
-  width: auto;
-  margin-left: 2%;
+.default-logo{
+  margin-left: 1%;
   align-self: center;
+}
+
+.default-logo:hover {
+  color: #21CE99;
+  fill: currentColor;
 }
 
 .default-links {
@@ -62,12 +65,12 @@ body {
 
 .signup p {
   margin: 0;
-  padding-top: 13px;
+  padding-top: 14px;
 }
 
 .signin p {
   margin: 0;
-  padding-top: 13px;
+  padding-top: 14px;
 }
 
 

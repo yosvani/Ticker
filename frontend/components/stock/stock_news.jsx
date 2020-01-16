@@ -9,7 +9,7 @@ class StockNews extends React.Component {
 
         <h1>News</h1>
 
-        {this.props.news.slice(0, 3).map((article, idx) => (
+        {this.props.news.slice(0, 10).map((article, idx) => (
           <a href={article.url} className="articles-list-item" key={`article-${idx}`}>
 
             <div className="articles-text">

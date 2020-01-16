@@ -1,3 +1,12 @@
+.chart-details {
+  height: 100px;
+}
+
+.chart-details price {
+  display: fixed;
+  height: 30px;
+}
+
 .dateview {
   display: flex;
   border-bottom: 1px solid #f4f4f5;
@@ -7,6 +16,10 @@
   width: 680px;
   margin-bottom: 50px;
   padding-bottom: 16px;
+}
+
+.dateview a:first-child {
+  color: #21ce99;
 }
 
 .dateview a {

@@ -1,0 +1,106 @@
+.transactions-table {
+  position: absolute;
+  top: 110px;
+  right: 130px;
+  width: 285px;
+  height: 400px;
+  font-family: sans-serif;
+  border: solid 1px f4f4f5;
+  border-radius: 4px;;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(48, 51, 51, 0.09);
+}
+
+.header {
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 20px 25px 10px 25px;
+  border-bottom: 1px solid #f4f4f5;
+  height: 25px;
+}
+
+.content {
+  font-size: 13px;
+  font-weight: 600;
+  border-bottom: 1px solid #f4f4f5;
+  padding: 10px 25px 20px 25px;
+}
+
+.shares {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px 20px 0px;
+}
+
+.market-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-share {
+  border: none;
+  background-color: #FAFAFA;
+  text-align: right;
+  width: 75px;
+  height: 30px;
+  border-radius: 8px;
+}
+
+.input-share:hover {
+  border: solid 1px;
+  border-color: lightgrey;
+}
+
+.input-share:focus {
+  border: solid 1px;
+  border-color: #21ce99;
+  outline: none !important;
+}
+
+
+
+
+// .left-nav-dropdown {
+//     display: none;
+//     z-index: 5100;
+//     position: absolute;
+//     white-space: nowrap;
+//     left: -2px;
+//     top: 53px;
+//     background: #fff;
+//     border-left: 2px solid $buttonblue;
+//     border-right: 1px solid #ccc;
+//     border-bottom: 1px solid #ccc;
+//     border-bottom-left-radius: 5px;
+//     border-bottom-right-radius: 5px;
+//     border-top-right-radius: 5px;
+//     // box-shadow: 30px 20px 8px rgba(0, 0, 0, 0.3);
+//     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.225);
+//     overflow: hidden;
+//     li {
+//         &:hover {
+//             background-color: $buttonblue;
+//             cursor: pointer;
+//             a {
+//                 color: $white;
+//             }
+//         }
+//         a {
+//             padding: 10px;
+//             padding-right: 80px;
+//         }
+//     }
+// }
+// li:hover ul {
+//     display: block;
+// }
+
+// <li className="left-nav-dropdown-item">
+//                         <Link className="left-nav-button" to="/">PLAY</Link>
+//                         <ul className="left-nav-dropdown">
+//                             <li><Link to="/">Create a game</Link></li>
+//                             <li><Link to="/">Tournaments</Link></li>
+//                             <li><Link to="/">Simultaneous exhibitions</Link></li>
+//                         </ul>
+//                     </li>

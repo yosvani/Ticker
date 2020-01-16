@@ -15,7 +15,7 @@ class StockCompany extends React.Component {
         <div className="facts">
           <div className="first-row-titles">
             <span>CEO<br />
-              <p>{company.CEO}</p>
+              <p className="first">{company.CEO}</p>
             </span>
             <span>Employee<br />
               <p>{company.employees}</p>

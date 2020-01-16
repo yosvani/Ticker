@@ -5,18 +5,25 @@ class StockTransactions extends React.Component {
     const { ticker } = this.props;
 
     return (
-      <div className="table">
+      <div className="transactions-table">
 
         <div className="header">
-          {/* <h3>Buy {ticker}</h3>
-          <h3>Sell {ticker}</h3> */}
+          <h3>Buy {ticker.toUpperCase()}</h3>
+          <h3>Sell {ticker.toUpperCase()}</h3>
+        </div>
+        
+        <div className="content">
+          <div className="shares">
+            <p>Shares</p>
+            <input type="text" className="input-share" />
+          </div>
+          <div className="market-price">
+            <p>Market Price</p>
+            <p>$311.92</p>
+          </div>
         </div>
 
-        <div className="content">
-          <p>Shares</p>
-          <p>Market Price</p>
-          <p>Estimated Cost</p>
-        </div>
+            <p>Estimated Cost</p>
 
         <div className="button">
           <button to="">SUBMIT BUY</button>

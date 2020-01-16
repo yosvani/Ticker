@@ -2,10 +2,11 @@ import React from 'react';
 import StockNews from './stock_news';
 import StockCompany from './stock_company';
 import StockChart from './stock_chart';
-import StockTransactions from './stock_news';
+import StockTransactions from './stock_transactions';
 
 
 class StockShow extends React.Component {
+ 
   componentDidMount() {
     this.props.fetchCompanyInfo(this.props.ticker);
     // this.props.fetchStocks1y(this.props.ticker);
@@ -20,7 +21,6 @@ class StockShow extends React.Component {
       // this.props.fetchStocks1y(this.props.ticker);
       this.props.fetchIntraday(this.props.ticker);
       this.props.fetchNews();
-
     }
   }
 

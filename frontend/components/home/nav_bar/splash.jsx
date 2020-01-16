@@ -17,7 +17,6 @@ return (
         free investing, gives you more ways to<br />
         make your money work harder.<br />
       </p>
-      <br />
       <NavLink to="/signup" className="splash-signup"><p>Sign Up</p></NavLink>
     </div>
 
