@@ -26,7 +26,7 @@ class StockTransactions extends React.Component {
             <p>Estimated Cost</p>
 
         <div className="button">
-          <button to="">SUBMIT BUY</button>
+          <button to="" className="button-submit">SUBMIT BUY</button>
         </div>
 
         <div className="buying-power">

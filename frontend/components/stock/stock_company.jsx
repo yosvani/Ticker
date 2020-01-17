@@ -5,8 +5,11 @@ class StockCompany extends React.Component {
     const { company } = this.props;
 
     return (
-      <div className="company">    
-        <h1>About</h1 >
+      <div className="company">   
+        <div className="title">
+          <h1>About</h1 >
+          <h1 id="show-more">Show More</h1>
+        </div> 
 
         <div className="description">
           {company.description}
@@ -27,6 +30,7 @@ class StockCompany extends React.Component {
               <p>{company.exchange}</p>
             </span>
           </div>
+          <br />
           <br />
           <div className="second-row-titles">
             <span>CEO<br />

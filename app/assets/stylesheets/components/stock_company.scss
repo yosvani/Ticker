@@ -1,11 +1,27 @@
-.company h1 {
-  font-size: 26px;
+.title {
+  display: flex;
+  justify-content: space-between;
   font-family: sans-serif;
   padding-bottom: 16px;
   border-bottom: 1px solid #f4f4f5;
   width: 680px;
+}
+
+.title h1 {
+  font-size: 26px;
   font-weight: 600;
 }
+
+#show-more {
+  font-size: 13px;
+  padding-top: 12px;
+  color: #21ce99;
+}
+
+// .title h3 {
+//   font-size: 13px;
+//   font-weight: 600;
+// }
 
 .description {
   font-size: 16px;
@@ -13,14 +29,15 @@
   padding-top: 24px;
   width: 570px;
   line-height: 19px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .facts {
   width: 680px;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: 20px;
+  padding-bottom: 12px;
   font-family: sans-serif;
+  font-size: 13px;
 }
 
 .first-row-titles {
@@ -31,6 +48,14 @@
   font-family: sans-serif;
 }
 
+.first-row-titles span {
+  font-weight: bold;
+}
+
+.first-row-titles p {
+  font-weight: normal;
+}
+
 .first {
   color: #21ce99;
 }
@@ -39,6 +64,14 @@
   display: flex;
   width: 600px;
   justify-content: space-between;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   font-family: sans-serif;
+}
+
+.second-row-titles span {
+  font-weight: bold;
+}
+
+.second-row-titles p {
+  font-weight: normal;
 }

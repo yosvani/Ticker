@@ -20,13 +20,14 @@
 
 .articles-list-item:hover {
   cursor: pointer;
-  background-color: #FAFAFA; 
+  background-color: rgb(247, 247, 247); 
 }
 
 .articles-text {
   text-decoration: none;
-  height: 135px;
+  height: 100px;
   width: 485px;
+  padding-left: 20px;
 }
 
 .articles-text h4 {
@@ -38,6 +39,8 @@
 .articles-text h3 {
   text-decoration: none;
   color: black;
+  font-weight: 600;
+  padding-bottom: 5px;
 }
 
 .articles-text p {
@@ -46,7 +49,13 @@
   font-size: 13px;
 }
 
-.articles img {
-  height: 135px;
+.articles-image {
   width: 195px;
+  height: 135px;
+  overflow: hidden;
+}
+
+.articles img {
+  width: 195px;
+  height: auto;
 }

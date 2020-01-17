@@ -16,9 +16,44 @@ body {
   z-index: -1;
 }
 
+.default-navbar-left {
+  display: flex;
+  justify-content: space-evenly;
+  // justify-content: center;
+  width: 600px;
+  margin-left: -20px;
+}
+
+.default-title {
+  display: flex;
+}
+
+.default-title h1 {
+  font-size: 28px;
+  padding-top: 10px;
+  font-weight: 400;
+}
+
+.default-navbar-left h3 {
+  font-size: 18px;
+  padding-top: 15px;
+  font-weight: 300;
+}
+
+.products {
+  display: flex;
+}
+
+.products i {
+  padding-top: 16px;
+  padding-left: 10px;
+}
+
 .default-logo{
   margin-left: 1%;
   align-self: center;
+  position: relative;
+  right: 7px;
 }
 
 .default-logo:hover {
