@@ -2,8 +2,6 @@ import React from 'react'
 
 class StockNews extends React.Component {
   render() {
-    // debugger
-    // console.log(this.props.news);
     return (
       <div className="articles">
 
