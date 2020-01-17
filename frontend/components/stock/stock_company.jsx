@@ -20,8 +20,8 @@ class StockCompany extends React.Component {
             <span>CEO<br />
               <p className="first">{company.CEO}</p>
             </span>
-            <span>Employee<br />
-              <p>{company.employees}</p>
+            <span>Sector<br />
+              <p>{company.sector}</p>
             </span>
             <span>Headquarters<br />
               <p>{company.city}</p>
@@ -32,20 +32,20 @@ class StockCompany extends React.Component {
           </div>
           <br />
           <br />
-          <div className="second-row-titles">
-            <span>CEO<br />
-              <p>{company.CEO}</p>
+          {/* <div className="second-row-titles">
+            <span>Sector<br />
+              <p>{company.sector}</p>
             </span>
-            <span>Employee<br />
-              <p>{company.employees}</p>
+            <span>Sector<br />
+              <p>{company.sector}</p>
             </span>
-            <span>Headquarters<br />
-              <p>{company.city}</p>
+            <span>Website<br />
+              <p>{company.website}</p>
             </span>
-            <span>Exchange<br />
-              <p>{company.exchange}</p>
+            <span>Symbol<br />
+              <p>{company.symbol}</p>
             </span>
-          </div>
+          </div> */}
         </div>
 
       </div>

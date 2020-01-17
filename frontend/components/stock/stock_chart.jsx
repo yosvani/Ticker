@@ -40,7 +40,7 @@ class StockChart extends React.Component {
               <Line type="linear" dataKey="close" dot={false} strokeWidth={2} stroke="#21ce99" /> */}
               <YAxis 
                 hide={true}
-                domain={[313, 317]}
+                domain={[315, 317]}
                 
                 />
               <Tooltip 
