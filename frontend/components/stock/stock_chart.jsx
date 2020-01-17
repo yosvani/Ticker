@@ -10,19 +10,12 @@ class StockChart extends React.Component {
     this.state = {
       currValue: this.props.intraday[0].close,
     }
-
     // this.handleMouseOver = this.handleMouseOver.bind(this);
   }
   
-  
   render() {
     const { ticker, company, oneYear, intraday } = this.props;
-
-    // let currPrice = 0;
-    // let priceFlux = 0;
-    // let priceFluxPercentage = 0;
-    // let openPrice = 0;
-    // let neg = 0;
+    console.log(intraday[0].close, 'intraday');
 
     return (
       <div className="stock-chart">
@@ -30,7 +23,7 @@ class StockChart extends React.Component {
         <div className="chart">
           <div className='chart-details'>
             <h1>{company.companyName}</h1>
-            <h1 id="stock-price">{this.state.currValue}</h1> 
+            <h1 id="stock-price">${intraday[0].close.formatMoney(2)}</h1> 
             <h4 id="stock-price-flux">placeholder</h4>
           </div>
           
