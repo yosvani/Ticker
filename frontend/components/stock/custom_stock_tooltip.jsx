@@ -2,19 +2,20 @@ import React from 'react';
 
 class CustomStockTooltip extends React.Component {
   
-  componentDidUpdate(prevProps) { //the return from the render below?
-    let price = document.getElementById('stock-price'); //grab the current price rendered on the browser
+  componentDidUpdate(prevProps) { //prevProps is built-in argument
+    console.log(prevProps,'prev');
+    console.log(this.props,'this');
+    let price = document.getElementById('stock-price'); //grab the current price rendered on the BROWSER
     let priceFlux = document.getElementById('stock-price-flux');
     let neg = "+";
+    
+    if (prevProps.active && this.props.payload[0]) { 
+      let priceFluxCalc = this.props.payload[0].value - prevProps.payload[0].payload.open; //current price - last 
+      let priceFluxPercentageCalc = priceFluxCalc * 100 / prevProps.payload[0].payload.open;
 
-    if (prevProps.active && this.props.payload[0]) { //what is active?
-      let priceFluxCalc = this.props.payload[0].value - prevProps.open; //current price - last 
-      let priceFluxPercentageCalc = priceFluxCalc * 100 / prevProps.open;
+      if (priceFluxCalc < 0) { neg = "-"; }
 
-      if (priceFluxCalc < 0) { 
-        neg = "-"; 
-      }
-      let priceFluxString = `${neg}$${Math.abs(priceFluxCalc).formatMoney(2)} (${priceFluxPercentageCalc.formatMoney(2)}%)`
+      let priceFluxString = `${neg}$${Math.abs(priceFluxCalc).formatMoney(2)} ${neg}(${Math.abs(priceFluxPercentageCalc).formatMoney(2)}%)`
       price.innerHTML = `$${this.props.payload[0].value.formatMoney(2)}`; 
       priceFlux.innerHTML = priceFluxString;
 
@@ -29,14 +30,15 @@ class CustomStockTooltip extends React.Component {
   
   //returns the data from our pointer
   render() {
-    const { active } = this.props; //why do we need this, why not go straight to pointer?
+    const { active } = this.props; //console.log(active); active comes from the chart, it's a boolean that represents if cursor is on chart
     
     if (active) {
       const { payload } = this.props; //payload is the object from pointer
+      console.log(payload, 'payload');
       if (payload && payload[0] && payload[0].payload) {
         return (
           <div className="custom-tooltip">
-            {payload[0].payload.label}
+            {payload[0].payload.time} {'ET'}
           </div>
         );
       }
@@ -47,23 +49,3 @@ class CustomStockTooltip extends React.Component {
 
 export default CustomStockTooltip;
 
-// CustomStockTooltip to retrieve data from the tip of cursor on the graph, 
-// which has a payload object that contains all the data
- 
-
-
-
-// if (prevProps.active && this.props.payload[0]) {
-    //   let priceFluxCalc = parseFloat(this.props.payload[0].value) - parseFloat(prevProps.openPrice);
-    //   let priceFluxPercentageCalc = parseFloat(priceFluxCalc * 100 / parseFloat(prevProps.openPrice));
-    //   if (priceFluxCalc < 0) { neg = "-"; }
-    //   let priceFluxString = `${neg}$${Math.abs(priceFluxCalc).formatMoney(2)} (${priceFluxPercentageCalc.formatMoney(2)}%)`
-    //   price.innerHTML = `$${parseFloat(this.props.payload[0].value).formatMoney(2)}`;
-    //   priceFlux.innerHTML = priceFluxString;
-    // } else if (prevProps.priceFlux !== this.props.priceFlux) {
-    //   price.innerHTML = `$${prevProps.price}`;
-    //   priceFlux.innerHTML = `${this.props.neg}$${this.props.priceFlux} (${this.props.priceFluxPercentage}%)`;
-    // } else {
-    //   price.innerHTML = `$${prevProps.price}`;
-    //   priceFlux.innerHTML = `${prevProps.neg}$${prevProps.priceFlux} (${prevProps.priceFluxPercentage}%)`;
-    // }

@@ -6,16 +6,41 @@ import CustomStockTooltip from './custom_stock_tooltip';
 class StockChart extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      currValue: this.props.intraday[0].close,
-    }
-    // this.handleMouseOver = this.handleMouseOver.bind(this);
   }
-  
+
   render() {
-    const { ticker, company, oneYear, intraday } = this.props;
-    console.log(intraday[0].close, 'intraday');
+    const { company, intraday } = this.props;
+
+    let data = [];
+    let prices = [];
+    let neg = "+"
+
+    for (let i = 0; i < intraday.length; i++) {
+      if (!intraday[i].close) {
+        continue;
+      } else {
+        data.push({
+          time: intraday[i].label,
+          open: intraday[i].open,
+          close: intraday[i].close,
+        });
+        prices.push(intraday[i].close);
+      }
+    }
+
+    let openPrice = data[0].open;
+    let currPrice = data[data.length - 1].close;
+    let priceFlux = Math.abs(currPrice - openPrice).formatMoney(2);
+    let priceFluxPercentage = Math.abs(priceFlux / openPrice).toFixed(2);
+    let min = Math.min(...prices);
+    let max = Math.max(...prices);
+
+    console.log(openPrice, 'open');
+    console.log(currPrice, 'curr');
+    console.log(priceFlux, 'pf');
+    console.log(priceFluxPercentage, 'pfp');
+    if (priceFlux < 0) { neg = "-"; }
+    // debugger;
 
     return (
       <div className="stock-chart">
@@ -23,30 +48,28 @@ class StockChart extends React.Component {
         <div className="chart">
           <div className='chart-details'>
             <h1>{company.companyName}</h1>
-            <h1 id="stock-price">${intraday[0].close.formatMoney(2)}</h1> 
-            <h4 id="stock-price-flux">placeholder</h4>
+            <h1 id="stock-price">${currPrice}</h1> 
+            <h4 id="stock-price-flux">{neg}${priceFlux} ({neg}{priceFluxPercentage}%)</h4>
           </div>
           
           <div className="rechart">
-            <LineChart width={680} height={200} data={intraday} 
+            <LineChart width={680} height={200} data={data} 
               margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
               <Line type="linear" dataKey="close" dot={false} strokeWidth={2} stroke="#21ce99" /> */}
               <YAxis 
                 hide={true}
-                domain={[315, 317]}
-                
+                domain={[min, max]}
                 />
               <Tooltip 
-                content={<CustomStockTooltip />}
+                content={<CustomStockTooltip price={currPrice} priceFlux={priceFlux} priceFluxPercentage={priceFluxPercentage} neg={neg}/>}
                 offset={-30}
                 position={{ y: -17 }}
                 isAnimationActive={false}
                 />
             </LineChart>
           </div>
-
         </div>
-        
+
         <br />
 
         <div className="dateview">

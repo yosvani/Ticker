@@ -9,7 +9,12 @@ const receiveNews = news => ({
   news
 });
 
-export const fetchNews = () => dispatch => (
-  NewsApiUtil.fetchNews() // fetch from API
+export const fetchNews = ticker => dispatch => (
+  NewsApiUtil.fetchNews(ticker) // fetch from API
     .then(news => dispatch(receiveNews(news.articles))) // send to frontend
+);
+
+export const fetchPortfolioNews = () => dispatch => (
+  NewsApiUtil.fetchPortfolioNews() 
+    .then(news => dispatch(receiveNews(news.articles))) 
 );

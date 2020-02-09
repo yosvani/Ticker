@@ -1,21 +1,20 @@
-export const fetchCompanyInfo = ticker => {
-  return ($.ajax({
+export const fetchCompanyInfo = ticker => (
+  $.ajax({
     url: `https://cloud.iexapis.com/stable/stock/${ticker}/company/?token=${window.iexAPIKey}`,
     method: 'GET'
   })
-)}
+)
 
-export const fetchStocks1y = ticker => {
-  return ($.ajax({
-    url: `https://cloud.iexapis.com/stable/stock/${ticker}/chart/1y/?token=${window.iexAPIKey}`,
-    method: 'GET'
-  })
-)}
-
-export const fetchIntraday = ticker => {
-  return ($.ajax({
+export const fetchIntraday = ticker => (
+  $.ajax({
     url: `https://cloud.iexapis.com/stable/stock/${ticker}/intraday-prices/?token=${window.iexAPIKey}`,
     method: 'GET'
   })
-  )
-}
+)
+
+export const fetchNews = ticker => (
+  $.ajax({
+    url: `https://newsapi.org/v2/everything?q=${ticker}&apiKey=77647a5fa383459c8140c181509d6438`,
+    method: 'GET'
+  })
+);

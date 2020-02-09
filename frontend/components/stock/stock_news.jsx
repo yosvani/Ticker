@@ -1,6 +1,7 @@
 import React from 'react'
 
 class StockNews extends React.Component {
+  
   render() {
     return (
       <div className="articles">

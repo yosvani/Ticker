@@ -6,35 +6,38 @@ import StockTransactions from './stock_transactions';
 
 
 class StockShow extends React.Component {
- 
   componentDidMount() {
-    this.props.fetchCompanyInfo(this.props.ticker);
-    // this.props.fetchStocks1y(this.props.ticker);
-    this.props.fetchIntraday(this.props.ticker);
-    this.props.fetchNews();
+    // this.props.fetchIntraday(this.props.ticker);
+    // this.props.fetchCompanyInfo(this.props.ticker);
+    // this.props.fetchNews(this.props.ticker);
+    const ticker = this.props.match.params.ticker;
+    this.props.fetchAll(ticker);
+
   }
 
-  //staying on same component but there is additional logic
   componentDidUpdate(prevProps) {
-    if (prevProps.match.params.ticker != this.props.match.params.ticker) {
-      this.props.fetchCompanyInfo(this.props.ticker);
-      // this.props.fetchStocks1y(this.props.ticker);
-      this.props.fetchIntraday(this.props.ticker);
-      this.props.fetchNews();
+    // if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
+    //   // this.props.fetchIntraday(this.props.ticker);
+    //   // this.props.fetchCompanyInfo(this.props.ticker);
+    //   // this.props.fetchNews(this.props.ticker);
+    //   this.props.fetchAll(this.props.ticker);
+    // }
+    if ((this.props.match.params.ticker !== prevProps.match.params.ticker)) {
+      const ticker = this.props.match.params.ticker;
+      this.props.fetchAll(ticker);
     }
   }
 
   render() {
-    const { news, company, ticker, oneYear, intraday } = this.props;
-
-    //use promise.all here
-    if (!this.props.company || !this.props.news || !this.props.intraday) return null; //render, componentidmount, render
+    const { news, company, ticker, intraday } = this.props;
+    
+    if (!this.props.company || !this.props.news || !this.props.intraday) return null;
     
     return (
       <div className="stock-show-page">
        
         <div className="stock-chart">
-          <StockChart company={company} ticker={ticker} oneYear={oneYear} intraday={intraday} />
+          <StockChart company={company} ticker={ticker} intraday={intraday} />
         </div>
 
         <div className="stock-company">
@@ -46,7 +49,7 @@ class StockShow extends React.Component {
         </div>
 
         <div className="stock-transactions">
-          <StockTransactions ticker={ticker} />
+          <StockTransactions ticker={ticker} intraday={intraday}/>
         </div>
 
       </div>

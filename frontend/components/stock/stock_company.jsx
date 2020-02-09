@@ -8,7 +8,7 @@ class StockCompany extends React.Component {
       <div className="company">   
         <div className="title">
           <h1>About</h1 >
-          <h1 id="show-more">Show More</h1>
+          <h1 id="show-more">Learn More</h1>
         </div> 
 
         <div className="description">
@@ -38,7 +38,7 @@ class StockCompany extends React.Component {
               <p>{company.city}</p>
             </span>
             <span>Employees<br />
-              <p>{company.employees}</p>
+              <p>{company.employees.toLocaleString()}</p>
             </span>
         </div>
 
