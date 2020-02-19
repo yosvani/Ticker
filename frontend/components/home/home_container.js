@@ -1,16 +1,17 @@
-import Home from './Home';
+import Home from './home_page';
 import { connect } from 'react-redux';
-import { fetchPortfolioNews } from '../../actions/news_actions';
+import { fetchHomeNews } from '../../actions/news_actions';
+import { fetchIntraday } from '../../actions/stock_actions';
 
 
 
 const mapStateToProps = state => ({
   currentUser: state.entities.users[state.session.id],
-  news: state.entities.news
+  news: state.entities.news,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchPortfolioNews: () => dispatch(fetchPortfolioNews())
+  fetchHomeNews: () => dispatch(fetchHomeNews()),
 });
 
 export default connect(

@@ -3,42 +3,32 @@ import React from 'react';
 class StockTransactions extends React.Component {
   constructor(props) {
     super(props);
-    let { ticker, intraday } = this.props;
+    const { ticker, intraday, currentUser } = this.props;
+    let currentPrice = intraday[intraday.length-1].close;
     
-    let currentPrice;
-    for (let i = intraday.length - 1; i > 0; i--) {
-      currentPrice = intraday[i].close;
-    };
-
     this.state = {
-      ticker: this.props.ticker,
+      user_id: currentUser.id,
+      ticker,
       price: currentPrice,
-      shares: '',
+      shares: 0,
       order_type: 'buy',
       cost: '0.00',
       submitted: ''
     };
-    
+
     this.update = this.update.bind(this);
     this.updateType = this.updateType.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.stock.ticker !== prevProps.stock.ticker) {
-  //     const intradayData = this.props.stock.intradayData;
-  //     let currPrice = this.props.stock.openPrice;
-  //     for (let i = intradayData.length - 1; i > 0; i--) {
-  //       if (intradayData[i].average !== -1) {
-  //         currPrice = Math.round(intradayData[i].average * 100) / 100;
-  //         break;
-  //       }
-  //     }
-
-  //     this.setState({ ticker: this.props.stock.ticker, currPrice });
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.ticker !== prevProps.ticker) {
+      const { ticker, intraday } = this.props;
+      let currentPrice = intraday[intraday.length - 1].close;
+      
+      this.setState({ ticker: ticker, price: currentPrice });
+    }
+  }
 
   update(e) {
     this.setState({ shares: e.target.value });
@@ -46,13 +36,13 @@ class StockTransactions extends React.Component {
   }
 
   updateCost(shares) {
-    if (shares === '') {
-      shares = '0';
-      this.setState({ cost: '0.00' });
-    } else {
+    // if (shares === '') {
+    //   shares = '0';
+    //   this.setState({ cost: '0.00' });
+    // } else {
       let cost = (shares * this.state.price).formatMoney(2);
       this.setState({ cost: cost });
-    }
+    // }
   }
 
   updateType(order_type) {
@@ -63,41 +53,69 @@ class StockTransactions extends React.Component {
     e.preventDefault();
     this.setState({ submitted: true });
 
-    let { ticker, shares, order_type, price } = this.state;
+    let { user_id, ticker, price, shares, order_type } = this.state;
     let transaction = {
+      user_id,
       ticker,
+      price,
       shares,
-      order_type,
-      price
+      order_type
     };
 
     this.props.createTransaction(transaction)
       .fail(() => this.setState({ submitted: '' }));
   }
 
-  // renderLimit() {
-  //   const { currentUser, ticker } = this.props;
-  //   let shares = 0;
-  //   for (let i = 0; i < currentUser.stocks.length; i++) {
-  //     let currStock = currentUser.stocks[i];
-  //     if (currStock.symbol === ticker) {
-  //       shares = currStock.shares;
-  //       break;
-  //     }
-  //   }
-  //   return this.state.order_type === 'buy' ? (
-  //     <div className="buying-power">
-  //       <h4>${currentUser.buyingPower.formatMoney()} Buying Power Available</h4>
-  //     </div>
-  //   ) : (
-  //     <div className="selling-power">
-  //       <h4>{shares} Shares Available</h4>
-  //     </div>
-  //   );
-  // }
+  renderLimit() {
+    const { currentUser, stock } = this.props;
+    let shares = 0;
+    for (let i = 0; i < currentUser.stocks.length; i++) {
+      let currStock = currentUser.stocks[i];
+      if (currStock.symbol === stock.ticker) {
+        shares = currStock.shares;
+        break;
+      }
+    }
+    return this.state.order_type === 'buy' ? (
+      <div className="buying-power">
+        <h4>${currentUser.buyingPower.formatMoney()} Buying Power Available</h4>
+      </div>
+    ) : (
+        <div className="buying-power">
+          <h4>{shares} Shares Available</h4>
+        </div>
+      );
+  }
+
+  renderLimit() {
+    const { currentUser, transactions, deposits, ticker } = this.props;
+
+    let shares = 0;
+    for (let i = 0; i < transactions.length; i++) {
+      let currTransaction = transactions[i];
+      if (currTransaction.ticker === ticker && currTransaction.order_type === 'buy') {
+        shares += currTransaction.shares;
+      } else if (currTransaction.ticker === ticker && currTransaction.order_type === 'sell') {
+        shares -= currTransaction.shares;
+      }
+    }
+    
+    return this.state.order_type === 'buy' ? (
+      <div className="buying-power">
+        <h4>${currentUser.buyingPower.formatMoney()} Buying Power Available</h4>
+      </div>
+    ) : (
+      <div className="buying-power">
+        <h4>{shares} Shares Available</h4>
+      </div>
+    );
+  }
 
   render() {
-    const { currentUser, ticker, intraday, errors } = this.props;
+    console.log(this.props.currentUser.buyingPower, 'buyingoiwer');
+    console.log(this.props.currentUser.stocksOwned, 'stockowned');
+    console.log(Object.entries(this.props.currentUser.stocksOwned), 'new');
+
 
     return (
       <div className="transactions-table">
@@ -106,7 +124,6 @@ class StockTransactions extends React.Component {
           <h3>
             <a className="header-buy" onClick={() => this.updateType('buy')}>Buy {`${this.props.ticker.toUpperCase()}`}</a>
             <a className="header-sell" onClick={() => this.updateType('sell')}>Sell {`${this.props.ticker.toUpperCase()}`}</a>
-            {/* {this.renderSellButton()} */}
           </h3>
         </div>
 
@@ -128,20 +145,23 @@ class StockTransactions extends React.Component {
               <p>${this.state.cost}</p>
             </div>
 
-            {/* <div className='transaction-errors'>
+            <div className='transaction-errors'>
               <ul>
-                {
-                  errors.map((error, idx) => <li key={idx}><img src={window.images.exclamation_circle} />{error}</li>)
-                }
+                {this.props.errors.map((error, i) => (
+                  <li key={`error-${i}`}>
+                    {/* <img src={window.images.error} className="exclamation" /> */}
+                    {error}
+                  </li>
+                ))}
               </ul>
-            </div> */}
+            </div>
 
             <div className='transactions-button'>
               <input type="submit" value={`SUBMIT ${this.state.order_type.toUpperCase()}`} disabled={this.state.submitted} />
             </div>
             
-            {/* {this.renderLimit()} */}
-
+            {this.renderLimit()}
+            
           </form>
         </div>
       </div>

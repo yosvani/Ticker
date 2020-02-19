@@ -4,6 +4,6 @@ class Api::StocksController < ApplicationController
   end
 
   def show
-    @stock = Stock.find_by(ticker: params[:ticker]) #where are these params
+    @stock = Stock.find_by(ticker: params[:ticker])
   end
 end

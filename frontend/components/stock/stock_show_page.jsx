@@ -7,35 +7,34 @@ import StockTransactions from './stock_transactions';
 
 class StockShow extends React.Component {
   componentDidMount() {
-    // this.props.fetchIntraday(this.props.ticker);
-    // this.props.fetchCompanyInfo(this.props.ticker);
-    // this.props.fetchNews(this.props.ticker);
-    const ticker = this.props.match.params.ticker;
-    this.props.fetchAll(ticker);
-
+    this.props.fetchIntraday(this.props.ticker);
+    this.props.fetchCompanyInfo(this.props.ticker);
+    this.props.fetchNews(this.props.ticker);
+    this.props.fetchTransactions();
+    this.props.fetchDeposits();
+    // this.props.fetchAll(ticker);
   }
-
+  
   componentDidUpdate(prevProps) {
-    // if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
-    //   // this.props.fetchIntraday(this.props.ticker);
-    //   // this.props.fetchCompanyInfo(this.props.ticker);
-    //   // this.props.fetchNews(this.props.ticker);
-    //   this.props.fetchAll(this.props.ticker);
-    // }
-    if ((this.props.match.params.ticker !== prevProps.match.params.ticker)) {
-      const ticker = this.props.match.params.ticker;
-      this.props.fetchAll(ticker);
+    if (prevProps.ticker !== this.props.ticker) {
+        this.props.fetchIntraday(this.props.ticker);
+        this.props.fetchCompanyInfo(this.props.ticker);
+        this.props.fetchNews(this.props.ticker);
+        this.props.fetchTransactions();
+        this.props.fetchDeposits();
+        // this.props.fetchAll(this.props.ticker);
     }
   }
-
-  render() {
-    const { news, company, ticker, intraday } = this.props;
     
-    if (!this.props.company || !this.props.news || !this.props.intraday) return null;
+  render() {
+    const { currentUser, ticker, company, intraday, news, errors, transactions, deposits, createTransaction} = this.props;
+    
+    //this only works for the first render, need to figure out to how to create a promise
+    if ( !this.props.currentUser || !this.props.ticker || !this.props.company || !this.props.intraday || !this.props.news || !this.props.errors || !this.props.transactions || !this.props.deposits) return null;
     
     return (
       <div className="stock-show-page">
-       
+
         <div className="stock-chart">
           <StockChart company={company} ticker={ticker} intraday={intraday} />
         </div>
@@ -49,7 +48,7 @@ class StockShow extends React.Component {
         </div>
 
         <div className="stock-transactions">
-          <StockTransactions ticker={ticker} intraday={intraday}/>
+          <StockTransactions ticker={ticker} intraday={intraday} createTransaction={createTransaction} currentUser={currentUser} errors={errors} transactions={transactions} deposits={deposits} />
         </div>
 
       </div>
@@ -60,3 +59,11 @@ class StockShow extends React.Component {
 
 export default StockShow;
 
+
+  // if ((this.props.match.params.ticker !== prevProps.match.params.ticker)) {
+  //     const ticker = this.props.match.params.ticker;
+  //     this.props.fetchAll(ticker);
+  //     this.props.fetchTransactions();
+  //     this.props.fetchDeposits();
+  //   }
+  // }

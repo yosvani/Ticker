@@ -33,15 +33,12 @@ ActiveRecord::Schema.define(version: 2020_02_07_050708) do
 
   create_table "transactions", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "stock_id", null: false
+    t.string "ticker", null: false
     t.float "price", null: false
     t.integer "shares", null: false
-    t.string "type", null: false
-    t.datetime "transaction_date"
+    t.string "order_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["stock_id"], name: "index_transactions_on_stock_id"
-    t.index ["user_id", "stock_id"], name: "index_transactions_on_user_id_and_stock_id"
   end
 
   create_table "users", force: :cascade do |t|

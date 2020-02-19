@@ -57,7 +57,7 @@ class SignUpForm extends React.Component {
           <h2>Make Your Money Move</h2>
           <br />
           <p>
-            Robinhood lets you invest in companies you love, commission-free.
+            Robinhood lets you invest in companies you love,<br />commission-free.
         </p>
           <form>
             <label>
@@ -98,6 +98,18 @@ class SignUpForm extends React.Component {
             </label>
           </form>
         </div>
+        {/* <div className="signup-form-animation">
+         <img src={window.images.signup} />
+         <br />
+         <p className="image-title">Commission-free stock trading.</p>
+         <br />
+         <p className="image-text">We’ve cut the fat that makes other<br />
+           brokerages costly, like manual<br />
+           account management and hundreds<br />
+           of storefront locations, so we can<br />
+           offer zero commission trading.
+             </p>
+        </div> */}
       </div>
     )
   }

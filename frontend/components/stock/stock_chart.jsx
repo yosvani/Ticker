@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 import CustomStockTooltip from './custom_stock_tooltip';
 
 class StockChart extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { company, intraday } = this.props;
@@ -34,13 +31,7 @@ class StockChart extends React.Component {
     let priceFluxPercentage = Math.abs(priceFlux / openPrice).toFixed(2);
     let min = Math.min(...prices);
     let max = Math.max(...prices);
-
-    console.log(openPrice, 'open');
-    console.log(currPrice, 'curr');
-    console.log(priceFlux, 'pf');
-    console.log(priceFluxPercentage, 'pfp');
     if (priceFlux < 0) { neg = "-"; }
-    // debugger;
 
     return (
       <div className="stock-chart">
@@ -48,14 +39,14 @@ class StockChart extends React.Component {
         <div className="chart">
           <div className='chart-details'>
             <h1>{company.companyName}</h1>
-            <h1 id="stock-price">${currPrice}</h1> 
+            <h1 id="stock-price">${currPrice.formatMoney(2)}</h1> 
             <h4 id="stock-price-flux">{neg}${priceFlux} ({neg}{priceFluxPercentage}%)</h4>
           </div>
           
           <div className="rechart">
             <LineChart width={680} height={200} data={data} 
               margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-              <Line type="linear" dataKey="close" dot={false} strokeWidth={2} stroke="#21ce99" /> */}
+              <Line type="linear" dataKey="close" dot={false} strokeWidth={2} stroke="#21ce99" /> 
               <YAxis 
                 hide={true}
                 domain={[min, max]}
@@ -88,23 +79,3 @@ class StockChart extends React.Component {
 export default StockChart;
 
 
-
-// handleMouseOver(e) {
-//   if (e) {
-//     this.setState({
-//       currValue: e.activePayload[0].value
-//     })
-//   }
-// }
-
-
-        // handleMouseOver(e) {
-        //   window.active = e.activePayload;
-        //   if (e) {
-        //     this.setState({
-        //       currValue: e.activePayload[0].value
-        //     })
-        //   }
-        // }
-        
-        // onMouseOver = { this.handleMouseOver } 

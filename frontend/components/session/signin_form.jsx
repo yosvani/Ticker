@@ -14,6 +14,10 @@ class SignInForm extends React.Component {
 
   componentDidMount() {
     this.props.clearErrors();
+    if (localStorage.getItem('demoUser') === 'true') {
+      delete localStorage.demoUser;
+      this.handleDemo();
+    }
   }
 
   update(field) {
@@ -28,8 +32,10 @@ class SignInForm extends React.Component {
     this.props.login(user);
   }
 
-  handleDemo(e) {
-    e.preventDefault();
+  // handleDemo(e) {
+  //   e.preventDefault();
+  handleDemo() {
+    // e.preventDefault();
     const user = Object.assign({}, {
       email: 'georgesoros',
       password: 'password'
@@ -52,6 +58,7 @@ class SignInForm extends React.Component {
 
   render() {
     return (
+
       <div className="signin-form">
         <img src={window.images.login} />
         <form onSubmit={this.handleSubmit} className="signin-form-content">

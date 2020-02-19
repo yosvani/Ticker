@@ -6,120 +6,38 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Demo user
-User.destroy_all
-User.create ({
-  email: 'georgesoros',
-  password: 'password'
-})
 
-# ActiveRecord::Base.transaction do 
-#   User.destroy_all
-#   Stock.destroy_all
-#   # Exchange.destroy_all
-#   # Deposit.destroy_all
-#   # Transaction.destroy_all
+# Below is all or nothing, if any seeds fail, none of them go through
+ActiveRecord::Base.transaction do 
+  User.destroy_all
+  Stock.destroy_all
+  Deposit.destroy_all
+  Transaction.destroy_all
 
+  demo_user = User.create ({ email: 'georgesoros', password: 'password' })
 
-#   # Create demo user
-#   demo_user = User.new({ email: 'georgesoros', password: 'password' })
-#   demo_user.save!
+  Deposit.create({ user_id: demo_user.id, amount: 1000000 })
 
-#   # Build exchanges
-#   # nasdaq = Exchange.create({ name: 'NASDAQ'})
-#   # nyse = Exchange.create({ name: 'NYSE' })
+  Stock.create({ name: "apple", ticker: "AAPL" })
+  Stock.create({ name: "facebook", ticker: "FB" })
+  Stock.create({ name: "netflix", ticker: "NFLX" })
+  Stock.create({ name: "tesla", ticker: "TSLA" })
+  Stock.create({ name: "amazon", ticker: "AMZN" })
+  Stock.create({ name: "microsft", ticker: "MSFT" })
+  Stock.create({ name: "starbucks", ticker: "SBUX" })
+  Stock.create({ name: "google", ticker: "GOOG" })
+  Stock.create({ name: "lyft", ticker: "LYFT" })
+  Stock.create({ name: "ebay", ticker: "EBAY" })
 
-#   # Grab all stocks on NASDAQ and NYSE exchanges and add to DB
-#   def grab_stocks(stock_str)
-#     stock_str.split("\n")
-#   end
+  Transaction.create({ user_id: demo_user.id, ticker: 'AAPL', price: 324.095, shares: 100, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'FB', price: 214.18, shares: 20, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'NFLX', price: 380.40, shares: 40, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'TSLA', price: 800.03, shares: 50, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'AMZN', price: 2134.87, shares: 50, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'MSFT', price: 185.35, shares: 20, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'SBUX', price: 89.28, shares: 30, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'GOOG', price: 1520.74, shares: 50, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'LYFT', price: 44.69, shares: 20, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'EBAY', price: 38.14, shares: 30, order_type: 'buy' })
 
-#   def grab_tickers(stock_arr)
-#     stock_arr.map { |stock| stock.split("|")[0] }
-#   end
-
-#   def grab_stock_names(stock_arr)
-#     stock_arr.map { |stock| stock.split("|")[1].split(" -")[0] }
-#   end
-
-#   def build_stock_objects(stock_string, exchange_id)
-#     tickers = grab_tickers(grab_stocks(stock_string))
-#     stocks = grab_stock_names(grab_stocks(stock_string))
-#     stock_objects = []
-
-#     tickers.each_with_index do |ticker, idx|
-#       stock_objects.push({
-#         ticker: ticker,
-#         name: stocks[idx],
-#         exchange_id: exchange_id
-#       })
-#     end
-
-#     stock_objects
-#   end
-
-#   nasdaq_stock_string = File.read("#{Rails.root}/db/nasdaq.csv")
-
-#   nasdaq_stocks = build_stock_objects(nasdaq_stock_string, nasdaq.id)
-
-#   nyse_stocks = File.readlines("#{Rails.root}/db/nyse.csv")[1..-1]
-
-#   nyse_stocks.map! do |stock|
-#     stock.split(",")
-#   end
-
-#   nyse_stocks.map! do |stock|
-#     {
-#       ticker: stock[0].delete("\""),
-#       name: stock[1].delete("\""),
-#       exchange_id: nyse.id
-#     }
-#   end
-
-#   all_stocks = nasdaq_stocks + nyse_stocks
-#   Stock.create(all_stocks)
-
-#   # Deposit money into demo user account
-#   Deposit.create({user_id: demo_user.id, amount: 50000})
-
-#   # Find stocks for portfolio
-#   aapl = Stock.find_by(ticker: :AAPL)
-#   amzn = Stock.find_by(ticker: :AMZN)
-#   fb = Stock.find_by(ticker: :FB)
-#   nflx = Stock.find_by(ticker: :NFLX)
-#   twtr = Stock.find_by(ticker: :TWTR)
-#   msft = Stock.find_by(ticker: :MSFT)
-#   sbux = Stock.find_by(ticker: :SBUX)
-#   amd = Stock.find_by(ticker: :AMD)
-#   blue = Stock.find_by(ticker: :BLUE)
-#   gild = Stock.find_by(ticker: :GILD)
-#   nktr = Stock.find_by(ticker: :NKTR)
-#   lulu = Stock.find_by(ticker: :LULU)
-#   stz = Stock.find_by(ticker: :STZ)
-
-#   # Generate transactions based on actual close prices for each stock at given date
-#   Time.zone = 'Eastern Time (US & Canada)'
-
-#   Transaction.create([
-#     {user_id: demo_user.id, stock_id: aapl.id, price: 68.45, num_shares: 50, order_type: 'buy', transaction_date: Time.zone.local(2014, 4, 16, 16, 0, 0)},
-#     {user_id: demo_user.id, stock_id: amzn.id, price: 305.84, num_shares: 20, order_type: 'buy', transaction_date: Time.zone.local(2014, 12, 10, 16, 0, 0)},
-#     {user_id: demo_user.id, stock_id: fb.id, price: 92.31, num_shares: 40, order_type: 'buy', transaction_date: Time.zone.local(2015, 9, 14, 16, 0, 0)},
-#     {user_id: demo_user.id, stock_id: nflx.id, price: 57.99, num_shares: 50, order_type: 'buy', transaction_date: Time.zone.local(2014, 2, 4, 16, 0, 0)},
-#     {user_id: demo_user.id, stock_id: twtr.id, price: 54.50, num_shares: 50, order_type: 'buy', transaction_date: Time.zone.local(2014, 3, 12, 16, 0, 0)},
-#     {user_id: demo_user.id, stock_id: msft.id, price: 37.91, num_shares: 50, order_type: 'buy', transaction_date: Time.zone.local(2014, 7, 14, 16, 0, 0)},
-#     {user_id: demo_user.id, stock_id: sbux.id, price: 37.54, num_shares: 50, order_type: 'buy', transaction_date: Time.zone.local(2014, 12, 17, 16, 0, 0)},
-#     {user_id: demo_user.id, stock_id: amd.id, price: 2.32, num_shares: 1000, order_type: 'buy', transaction_date: Time.zone.local(2015, 5, 20, 16, 0, 0)},
-#     {user_id: demo_user.id, stock_id: blue.id, price: 90.34, num_shares: 30, order_type: 'buy', transaction_date: Time.zone.local(2015, 2, 17, 16, 0, 0)},
-#     {user_id: demo_user.id, stock_id: gild.id, price: 104.48, num_shares: 50, order_type: 'buy', transaction_date: Time.zone.local(2015, 8, 7, 16, 0, 0)},
-#     {user_id: demo_user.id, stock_id: nktr.id, price: 15.27, num_shares: 100, order_type: 'buy', transaction_date: Time.zone.local(2016, 4, 13, 16, 0, 0)},
-#     {user_id: demo_user.id, stock_id: lulu.id, price: 51.91, num_shares: 50, order_type: 'buy', transaction_date: Time.zone.local(2015, 10, 12, 16, 0, 0)},
-#     {user_id: demo_user.id, stock_id: stz.id, price: 152.50, num_shares: 20, order_type: 'buy', transaction_date: Time.zone.local(2017, 2, 9, 16, 0, 0)}
-#   ])
-
-#   # Create Portfolio Snapshots (data lives in sibling file 'portfolio_snapshots.rb')
-#   SNAPSHOTS.each do |snapshot|
-#     date = Date.parse(snapshot[:time])
-#     balance = snapshot[:balance]
-#     PortfolioSnapshot.create({ date: date, balance: balance, user_id: demo_user.id })
-#   end
-# end
+end

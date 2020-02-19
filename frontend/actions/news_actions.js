@@ -14,7 +14,7 @@ export const fetchNews = ticker => dispatch => (
     .then(news => dispatch(receiveNews(news.articles))) // send to frontend
 );
 
-export const fetchPortfolioNews = () => dispatch => (
-  NewsApiUtil.fetchPortfolioNews() 
+export const fetchHomeNews = () => dispatch => (
+  NewsApiUtil.fetchHomeNews() 
     .then(news => dispatch(receiveNews(news.articles))) 
 );

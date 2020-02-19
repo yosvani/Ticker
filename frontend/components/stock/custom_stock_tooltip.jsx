@@ -3,8 +3,6 @@ import React from 'react';
 class CustomStockTooltip extends React.Component {
   
   componentDidUpdate(prevProps) { //prevProps is built-in argument
-    console.log(prevProps,'prev');
-    console.log(this.props,'this');
     let price = document.getElementById('stock-price'); //grab the current price rendered on the BROWSER
     let priceFlux = document.getElementById('stock-price-flux');
     let neg = "+";
@@ -34,7 +32,6 @@ class CustomStockTooltip extends React.Component {
     
     if (active) {
       const { payload } = this.props; //payload is the object from pointer
-      console.log(payload, 'payload');
       if (payload && payload[0] && payload[0].payload) {
         return (
           <div className="custom-tooltip">

@@ -3,7 +3,6 @@ body {
 }
 
 .default-navbar {
-  // position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,20 +17,25 @@ body {
 
 .default-navbar-left {
   display: flex;
-  justify-content: space-evenly;
-  // justify-content: center;
-  width: 600px;
-  margin-left: -20px;
+  margin-left: 1.25%;
 }
 
-.default-title {
+.default-logo {
   display: flex;
 }
 
-.default-title h1 {
-  font-size: 28px;
+.default-logo h1 {
+  font-size: 24px;
   padding-top: 10px;
   font-weight: 400;
+}
+
+.default-feather{
+  margin-left: -3%;
+}
+
+.default-logo:hover {
+  cursor: pointer;
 }
 
 .default-navbar-left h3 {
@@ -40,7 +44,7 @@ body {
   font-weight: 300;
 }
 
-.products {
+.default-products {
   display: flex;
 }
 
@@ -49,24 +53,57 @@ body {
   padding-left: 10px;
 }
 
-.default-logo{
-  margin-left: 1%;
-  align-self: center;
-  position: relative;
-  right: 7px;
+.default-personal-links {
+  display: flex;
+  align-items: center;
+  margin-left: 10%;
 }
 
-.default-logo:hover {
+.fas {
+  color: black;
+  font-size: 36px;
+}
+
+.fab {
+  color: black;
+  font-size: 36px;
+}
+
+.fab:before {
+  margin-left: 10px;
+}
+
+.fab:hover {
   color: #21CE99;
-  fill: currentColor;
+}
+
+.fas:hover {
+  color: #21CE99;
+}
+
+.default-navbar-right {
+  margin-right: 1%;
 }
 
 .default-links {
   display: flex;
   align-items: center;
-  // justify-content: flex-end;
-  // position: relative;
   margin-right: 2%;
+}
+
+.demo {
+  display: inline-block;
+  text-align: center;
+  background-color: #21ce99;
+  color: black;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  height: 45px;
+  width: 95px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
 .signin {
@@ -87,7 +124,7 @@ body {
 .signup {
   display: inline-block;
   text-align: center;
-  background-color: #21ce99;
+  background-color: white;
   color: black;
   font-size: 16px;
   font-weight: 700;
@@ -96,6 +133,12 @@ body {
   width: 95px;
   border-radius: 8px;
   cursor: pointer;
+  margin-right: 10px;
+}
+
+.demo p {
+  margin: 0;
+  padding-top: 14px;
 }
 
 .signup p {

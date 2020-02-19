@@ -7,7 +7,7 @@ class Api::SessionsController < ApplicationController
 
     if @user
       login(@user)
-      render "api/users/show" #need to look over this 
+      render "api/users/show"
     else 
       render json: ["Invalid email/password combination"], status: 401
     end
@@ -17,10 +17,14 @@ class Api::SessionsController < ApplicationController
     @user = current_user
     if @user 
       logout 
-      render "api/users/show" #need to look over this 
+      render "api/users/show" 
     else
       render json: ["Nobody signed in"], status: 404
     end
   end
     
 end
+
+
+# render calls your user show view to retrieve data from db and store within state for us to access
+# render stores the custom error message into an array within state for us to access
