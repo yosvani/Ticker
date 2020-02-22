@@ -1,0 +1,39 @@
+.stock-portfolio-item {
+  display: flex;
+  justify-content: space-evenly; 
+  align-items: center; 
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: -.5px;
+  padding: 5% 10%;
+}
+
+.stock-portfolio-item:hover {
+  cursor: pointer;
+  background-color: rgb(247, 247, 247); 
+}
+
+.stock-title {
+  text-align: left;
+  width: 100px;
+}
+
+.stock-title span {
+  font-weight: 500;
+}
+
+.stock-portfolio-chart {
+  width: 90px;
+  text-align: center;
+  padding: 0px 7.5px;
+}
+
+.mini-chart:hover {
+  cursor: pointer;
+}
+
+.stock-price {
+  width: 80px;
+  text-align: right;
+}

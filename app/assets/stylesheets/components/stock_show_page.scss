@@ -1,7 +1,15 @@
 .stock-show-page {
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+  padding-top: 3%;
+}
+
+.stock-show-left {
+  padding-right: 1%;
+}
+
+.stock-show-right {
+  padding-left: 1%;
 }
 
 

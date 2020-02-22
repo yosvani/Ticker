@@ -82,6 +82,7 @@ class User < ApplicationRecord
     stocks.each_with_index do |stock, idx| 
       response = JSON.parse(open("https://cloud.iexapis.com/stable/stock/market/batch?types=quote,chart&range=1d&token=pk_2d262b4b89114ceda9b7ada2d9e99bb9&symbols=#{stock[:ticker]}").read)
 
+      
       stock[:price] = response[stock[:ticker]]['quote']['latestPrice']
       stock[:intraday] = response[stock[:ticker]]['chart']
     end

@@ -17,7 +17,7 @@ body {
 
 .default-navbar-left {
   display: flex;
-  margin-left: 1.25%;
+  margin-left: 2%;
 }
 
 .default-logo {
@@ -25,9 +25,10 @@ body {
 }
 
 .default-logo h1 {
-  font-size: 24px;
-  padding-top: 10px;
-  font-weight: 400;
+  font-size: 26px;
+  padding-top: 7%;
+  font-stretch: ultra-condensed;
+  letter-spacing: -1px;
 }
 
 .default-feather{
@@ -57,10 +58,15 @@ body {
   display: flex;
   align-items: center;
   margin-left: 10%;
+  font-size: 36px;
 }
 
 .fas {
   color: black;
+  font-size: 36px;
+}
+
+.ev {
   font-size: 36px;
 }
 
@@ -119,6 +125,7 @@ body {
   border-radius: 8px;
   cursor: pointer;
   margin-right: 10px;
+  border-color: lightgrey;
 }
 
 .signup {
@@ -134,6 +141,18 @@ body {
   border-radius: 8px;
   cursor: pointer;
   margin-right: 10px;
+}
+
+.demo:hover {
+  background-color: #1ae9aa;
+}
+
+.signup:hover {
+  background-color: rgb(247, 247, 247);
+}
+
+.signin:hover {
+  background-color: rgb(247, 247, 247);
 }
 
 .demo p {

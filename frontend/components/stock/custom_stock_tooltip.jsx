@@ -13,7 +13,7 @@ class CustomStockTooltip extends React.Component {
 
       if (priceFluxCalc < 0) { neg = "-"; }
 
-      let priceFluxString = `${neg}$${Math.abs(priceFluxCalc).formatMoney(2)} ${neg}(${Math.abs(priceFluxPercentageCalc).formatMoney(2)}%)`
+      let priceFluxString = `${neg}$${((Math.abs(priceFluxCalc))*10).formatMoney(2)} (${neg}${((Math.abs(priceFluxPercentageCalc))*100).formatMoney(2)}%)`
       price.innerHTML = `$${this.props.payload[0].value.formatMoney(2)}`; 
       priceFlux.innerHTML = priceFluxString;
 

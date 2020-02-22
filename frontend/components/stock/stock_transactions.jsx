@@ -4,13 +4,13 @@ class StockTransactions extends React.Component {
   constructor(props) {
     super(props);
     const { ticker, intraday, currentUser } = this.props;
-    let currentPrice = intraday[intraday.length-1].close;
-    
+    let currentPrice = intraday[intraday.length-1].high;
+
     this.state = {
       user_id: currentUser.id,
       ticker,
       price: currentPrice,
-      shares: 0,
+      shares: '',
       order_type: 'buy',
       cost: '0.00',
       submitted: ''
@@ -21,13 +21,12 @@ class StockTransactions extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.ticker !== prevProps.ticker) {
-      const { ticker, intraday } = this.props;
-      let currentPrice = intraday[intraday.length - 1].close;
-      
-      this.setState({ ticker: ticker, price: currentPrice });
-    }
+  componentWillMount() {
+    // if (this.state.price !== this.props.intraday[this.props.intraday.length - 1].close) {
+      let intraday = this.props.intraday;
+      let currPrice = intraday[intraday.length-1].close; //array(390)
+      this.setState({ price: currPrice });
+    // }
   }
 
   update(e) {
@@ -36,13 +35,13 @@ class StockTransactions extends React.Component {
   }
 
   updateCost(shares) {
-    // if (shares === '') {
-    //   shares = '0';
-    //   this.setState({ cost: '0.00' });
-    // } else {
+    if (shares === '') {
+      shares = '0';
+      this.setState({ cost: '0.00' });
+    } else {
       let cost = (shares * this.state.price).formatMoney(2);
       this.setState({ cost: cost });
-    // }
+    }
   }
 
   updateType(order_type) {
@@ -67,28 +66,7 @@ class StockTransactions extends React.Component {
   }
 
   renderLimit() {
-    const { currentUser, stock } = this.props;
-    let shares = 0;
-    for (let i = 0; i < currentUser.stocks.length; i++) {
-      let currStock = currentUser.stocks[i];
-      if (currStock.symbol === stock.ticker) {
-        shares = currStock.shares;
-        break;
-      }
-    }
-    return this.state.order_type === 'buy' ? (
-      <div className="buying-power">
-        <h4>${currentUser.buyingPower.formatMoney()} Buying Power Available</h4>
-      </div>
-    ) : (
-        <div className="buying-power">
-          <h4>{shares} Shares Available</h4>
-        </div>
-      );
-  }
-
-  renderLimit() {
-    const { currentUser, transactions, deposits, ticker } = this.props;
+    const { currentUser, transactions, ticker } = this.props;
 
     let shares = 0;
     for (let i = 0; i < transactions.length; i++) {
@@ -102,7 +80,7 @@ class StockTransactions extends React.Component {
     
     return this.state.order_type === 'buy' ? (
       <div className="buying-power">
-        <h4>${currentUser.buyingPower.formatMoney()} Buying Power Available</h4>
+        <h4>${currentUser.buyingPower.formatMoney(2)} Buying Power Available</h4>
       </div>
     ) : (
       <div className="buying-power">
@@ -112,55 +90,54 @@ class StockTransactions extends React.Component {
   }
 
   render() {
-    console.log(this.props.currentUser.buyingPower, 'buyingoiwer');
-    console.log(this.props.currentUser.stocksOwned, 'stockowned');
-    console.log(Object.entries(this.props.currentUser.stocksOwned), 'new');
-
 
     return (
       <div className="transactions-table">
 
         <div className="transactions-header">
-          <h3>
-            <a className="header-buy" onClick={() => this.updateType('buy')}>Buy {`${this.props.ticker.toUpperCase()}`}</a>
-            <a className="header-sell" onClick={() => this.updateType('sell')}>Sell {`${this.props.ticker.toUpperCase()}`}</a>
+          <h3>    
+          <a id='first' className={this.state.order_type === 'buy' ? 'active' : ''} onClick={() => this.updateType('buy')}>Buy {`${this.props.ticker.toUpperCase()}`}</a>
+          <a className={this.state.order_type === 'sell' ? 'active' : ''} onClick={() => this.updateType('sell')}>Sell {`${this.props.ticker.toUpperCase()}`}</a>
           </h3>
         </div>
-
+        
         <div className='transactions-content'>
 
           <form onSubmit={this.handleSubmit}>
             <div className="content-shares">
               <p>Shares</p>
-              <input type='text' placeholder='0' value={this.state.shares} onChange={this.update} />
+              <input type='text' className='shares' placeholder='0' value={this.state.shares} onChange={this.update} />
             </div> 
 
             <div className='content-price'>
               <p>Market Price</p>
               <p>${this.state.price.formatMoney(2)}</p>
+              {/* <p>${this.state.price}</p> */}
             </div>
 
             <div className='content-cost'>
               <p>Estimated Cost</p>
               <p>${this.state.cost}</p>
-            </div>
+            </div><br />
 
-            <div className='transaction-errors'>
+            <div className='content-errors'>
               <ul>
                 {this.props.errors.map((error, i) => (
                   <li key={`error-${i}`}>
-                    {/* <img src={window.images.error} className="exclamation" /> */}
+                    <img src={window.images.error} className="exclamation" />
                     {error}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className='transactions-button'>
-              <input type="submit" value={`SUBMIT ${this.state.order_type.toUpperCase()}`} disabled={this.state.submitted} />
+            <div className='content-button'>
+              <input type="submit" className="submit" value={`SUBMIT ${this.state.order_type.toUpperCase()}`} disabled={this.state.submitted} />
             </div>
-            
-            {this.renderLimit()}
+
+            <div className='content-limit'>
+              {this.renderLimit()}
+            </div>
             
           </form>
         </div>

@@ -34,26 +34,22 @@ const StockTableItem = props => {
   if (priceFlux < 0) { neg = "-"; }
 
   return (
-    <div className="stock-table">
-
+    <div className="stock-portfolio-item">
       <div className="stock-title">
-          {stockName} <br />
+          <span>{stockName}</span><br />
           {stockShares} shares
       </div>
 
-      <div className="stock-chart">
-        <LineChart width={60} height={40} data={data}>
+      <div className="stock-portfolio-chart">
+        <LineChart width={80} height={40} data={data} className="mini-chart">
           <Line type="linear" dataKey="close" dot={false} strokeWidth={1} stroke="#21ce99" />
           <YAxis hide={true} domain={[min, max]} />
         </LineChart>
       </div>
 
       <div className="stock-price">
-        {/* {intraday[intraday.length-1].close} */}
-        ${currPrice.formatMoney(2)} <br />
-        {neg}{priceFluxPercentage}%
+        ${currPrice.formatMoney(2)}
       </div>
-
     </div>
   )
 }

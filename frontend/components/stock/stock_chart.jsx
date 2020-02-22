@@ -6,7 +6,7 @@ import CustomStockTooltip from './custom_stock_tooltip';
 class StockChart extends React.Component {
 
   render() {
-    const { company, intraday } = this.props;
+    const { company, intraday, ticker } = this.props;
 
     let data = [];
     let prices = [];
@@ -18,17 +18,17 @@ class StockChart extends React.Component {
       } else {
         data.push({
           time: intraday[i].label,
-          open: intraday[i].open,
-          close: intraday[i].close,
+          open: intraday[i].low,
+          close: intraday[i].high,
         });
         prices.push(intraday[i].close);
       }
     }
 
     let openPrice = data[0].open;
-    let currPrice = data[data.length - 1].close;
+    let currPrice = data[data.length - 1].close.formatMoney(2);
     let priceFlux = Math.abs(currPrice - openPrice).formatMoney(2);
-    let priceFluxPercentage = Math.abs(priceFlux / openPrice).toFixed(2);
+    let priceFluxPercentage = ((Math.abs(priceFlux / openPrice))*100).toFixed(2);
     let min = Math.min(...prices);
     let max = Math.max(...prices);
     if (priceFlux < 0) { neg = "-"; }
@@ -39,12 +39,12 @@ class StockChart extends React.Component {
         <div className="chart">
           <div className='chart-details'>
             <h1>{company.companyName}</h1>
-            <h1 id="stock-price">${currPrice.formatMoney(2)}</h1> 
+            <h1 id="stock-price">${currPrice}</h1> 
             <h4 id="stock-price-flux">{neg}${priceFlux} ({neg}{priceFluxPercentage}%)</h4>
-          </div>
+          </div><br /><br />
           
           <div className="rechart">
-            <LineChart width={680} height={200} data={data} 
+            <LineChart width={680} height={250} data={data} 
               margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
               <Line type="linear" dataKey="close" dot={false} strokeWidth={2} stroke="#21ce99" /> 
               <YAxis 
@@ -59,17 +59,15 @@ class StockChart extends React.Component {
                 />
             </LineChart>
           </div>
-        </div>
-
-        <br />
+        </div><br />
 
         <div className="dateview">
-          <Link to="">1D</Link>
-          <Link to="">1W</Link>
-          <Link to="">1M</Link>
-          <Link to="">3M</Link>
-          <Link to="">1Y</Link>
-          <Link to="">5Y</Link>
+          <p>1D</p>
+          <p>1W</p>
+          <p>1M</p>
+          <p>3M</p>
+          <p>1Y</p>
+          <p>5Y</p>
         </div>
       </div>
     )

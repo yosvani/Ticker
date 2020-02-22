@@ -2,25 +2,66 @@ body {
   margin:0;
 }
 
-html {
-    overflow: hidden;
+.splash-bottom {
+  text-align: center;
+  justify-content: center;
+  font-family: sans-serif;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  background-color: black;
+  color: white;
 }
 
-.splash {
+.splash-bottom h1{
+  font-size: 36px;
+  letter-spacing: -.75px;
+  font-weight: 600;
+}
+
+.splash-bottom h4 {
+  font-size: 14px;
+  line-height: 30px;
+  letter-spacing: -.5px;
+  font-weight: 100;
+}
+
+.disclosure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.splash-bottom h5 {
+  align-self: center;
+  font-size: 13px;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.disclosure i {
+  font-size: 20px;
+  padding-right: 3px;
+  cursor: pointer;
+  color: white;
+}
+
+.splash-top {
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   background-color: #21ce99;
   padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .splash-text {
-  padding-right: 10px;
-  // padding-bottom: 150px;
-  padding-bottom: 15%;
+  padding-right: 1%;
+  padding-bottom: 5%;
 }
 
 .splash-text h1 {
@@ -28,6 +69,7 @@ html {
   font-weight: bold;
   margin-bottom: 20px;
   line-height: 75px;
+  letter-spacing: -1px;
 }
 
 .splash-text p {
@@ -38,7 +80,6 @@ html {
 }
 
 .splash img {
-  padding-bottom: 10%;
   height: 500px;
   width: auto;
 }
@@ -59,4 +100,8 @@ html {
   font-size: 16px;
   font-weight: bold;
   color: white;
+}
+
+.splash-signup:hover {
+  background-color: rgba(48, 51, 51, 0.09);
 }

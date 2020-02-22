@@ -14,9 +14,9 @@ ActiveRecord::Base.transaction do
   Deposit.destroy_all
   Transaction.destroy_all
 
-  demo_user = User.create ({ email: 'georgesoros', password: 'password' })
+  demo_user = User.create ({ email: 'warrenbuffett', password: 'password' })
 
-  Deposit.create({ user_id: demo_user.id, amount: 1000000 })
+  Deposit.create({ user_id: demo_user.id, amount: 150000 })
 
   Stock.create({ name: "apple", ticker: "AAPL" })
   Stock.create({ name: "facebook", ticker: "FB" })
@@ -29,15 +29,14 @@ ActiveRecord::Base.transaction do
   Stock.create({ name: "lyft", ticker: "LYFT" })
   Stock.create({ name: "ebay", ticker: "EBAY" })
 
-  Transaction.create({ user_id: demo_user.id, ticker: 'AAPL', price: 324.095, shares: 100, order_type: 'buy' })
-  Transaction.create({ user_id: demo_user.id, ticker: 'FB', price: 214.18, shares: 20, order_type: 'buy' })
-  Transaction.create({ user_id: demo_user.id, ticker: 'NFLX', price: 380.40, shares: 40, order_type: 'buy' })
-  Transaction.create({ user_id: demo_user.id, ticker: 'TSLA', price: 800.03, shares: 50, order_type: 'buy' })
-  Transaction.create({ user_id: demo_user.id, ticker: 'AMZN', price: 2134.87, shares: 50, order_type: 'buy' })
-  Transaction.create({ user_id: demo_user.id, ticker: 'MSFT', price: 185.35, shares: 20, order_type: 'buy' })
-  Transaction.create({ user_id: demo_user.id, ticker: 'SBUX', price: 89.28, shares: 30, order_type: 'buy' })
-  Transaction.create({ user_id: demo_user.id, ticker: 'GOOG', price: 1520.74, shares: 50, order_type: 'buy' })
-  Transaction.create({ user_id: demo_user.id, ticker: 'LYFT', price: 44.69, shares: 20, order_type: 'buy' })
-  Transaction.create({ user_id: demo_user.id, ticker: 'EBAY', price: 38.14, shares: 30, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'AAPL', price: 324.095, shares: 97, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'FB', price: 214.18, shares: 23, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'NFLX', price: 380.40, shares: 41, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'TSLA', price: 800.03, shares: 14, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'AMZN', price: 2134.87, shares: 4, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'MSFT', price: 185.35, shares: 26, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'SBUX', price: 89.28, shares: 37, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'GOOG', price: 1520.74, shares: 7, order_type: 'buy' })
+  Transaction.create({ user_id: demo_user.id, ticker: 'EBAY', price: 38.14, shares: 152, order_type: 'buy' })
 
 end

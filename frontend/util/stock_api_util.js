@@ -18,3 +18,5 @@ export const fetchNews = ticker => (
     method: 'GET'
   })
 );
+
+

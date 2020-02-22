@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 
 class StockCompany extends React.Component {
   render() {
@@ -8,7 +10,7 @@ class StockCompany extends React.Component {
       <div className="company">   
         <div className="title">
           <h1>About</h1 >
-          <h1 id="show-more">Learn More</h1>
+          <h3>Learn More</h3>
         </div> 
 
         <div className="description">

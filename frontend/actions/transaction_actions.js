@@ -26,9 +26,9 @@ export const createTransaction = transactionForm => dispatch => {
       dispatch(receiveTransaction(transaction));
       window.location.reload();
     })
-  //   .fail(errors => {
-  //     dispatch(receiveErrors(errors.responseJSON));
-  // })
+    .fail(errors => {
+      dispatch(receiveErrors(errors.responseJSON));
+  })
 };
 
 export const fetchTransactions = () => dispatch => {

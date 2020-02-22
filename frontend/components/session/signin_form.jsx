@@ -35,9 +35,8 @@ class SignInForm extends React.Component {
   // handleDemo(e) {
   //   e.preventDefault();
   handleDemo() {
-    // e.preventDefault();
     const user = Object.assign({}, {
-      email: 'georgesoros',
+      email: 'warrenbuffett',
       password: 'password'
     });
     this.demo(user);
@@ -58,7 +57,6 @@ class SignInForm extends React.Component {
 
   render() {
     return (
-
       <div className="signin-form">
         <img src={window.images.login} />
         <form onSubmit={this.handleSubmit} className="signin-form-content">
@@ -87,7 +85,7 @@ class SignInForm extends React.Component {
             {this.renderErrors()}
             <br />
             <input className="signin-submit" type="submit" value='Sign In' onClick={this.handleSubmit} />
-            <input className="signin-demo" type="submit" value='Demo' onClick={this.handleDemo} />
+            {/* <input className="signin-demo" type="submit" value='Demo' onClick={this.handleDemo} /> */}
           </div>
         </form>
       </div>

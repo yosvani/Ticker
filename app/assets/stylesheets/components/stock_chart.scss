@@ -8,9 +8,11 @@
   font-family: sans-serif;
 }
 
-// #stock-price-flux {
-//   // color: white;
-// }
+#stock-price-flux  {
+  font-size: 26;
+  font-weight: 300;
+  font-family: sans-serif;
+}
 
 .rechart {
   font-family: sans-serif;
@@ -21,7 +23,7 @@
 .dateview {
   display: flex;
   border-bottom: 1px solid #f4f4f5;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
   font-family: sans-serif;
   width: 680px;
@@ -29,11 +31,12 @@
   padding-bottom: 16px;
 }
 
-.dateview a:first-child {
+.dateview p:first-child {
   color: #21ce99;
+  text-decoration: underline;
 }
 
-.dateview a {
+.dateview p {
   padding-right: 20px;
   font-weight: bold;
   text-decoration: none;
@@ -41,55 +44,22 @@
   font-size: 13px;
 }
 
-.dateview a:hover {
+.dateview p:hover {
   text-decoration: underline;
   color: #21ce99;
+  cursor: pointer;
 }
 
 .chart h1 {
-  font-size: 36px;
+  font-size: 44px;
   font-family: sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.29px;
-  line-height: 42px;
+  letter-spacing: -1px;
 }
 
-// .company h1 {
-//   font-size: 26px;
-//   font-family: sans-serif;
-//   padding-bottom: 16px;
-//   border-bottom: 1px solid #f4f4f5;
-//   width: 680px;
-// }
+.chart h4 {
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
 
-// .description {
-//   font-size: 16px;
-//   font-family: sans-serif;
-//   padding-top: 24px;
-//   width: 570px;
-//   line-height: 19px;
-//   margin-bottom: 20px;
-// }
-
-// .facts {
-//   width: 680px;
-//   padding-top: 24px;
-//   padding-bottom: 24px;
-//   font-family: sans-serif;
-// }
-
-// .first-row-titles {
-//   display: flex;
-//   align-content: flex-start;
-//   width: 600px;
-//   justify-content: space-between;
-//   font-family: sans-serif;
-// }
-
-// .second-row-titles {
-//   display: flex;
-//   width: 600px;
-//   justify-content: space-between;
-//   margin-bottom: 50px;
-//   font-family: sans-serif;
-// }
