@@ -7,7 +7,7 @@ class PortfolioChart extends React.Component {
 
   render() {
     const { currentUser } = this.props;
-    let portfolio = currentUser.portfolio[8].intraday;
+    let portfolio = currentUser.portfolio[7].intraday;
     let multiplier = 250.99;
 
     let data = [];
