@@ -110,15 +110,14 @@ class StockTransactions extends React.Component {
             </div> 
 
             <div className='content-price'>
-              <p>Market Price</p>
-              <p>${this.state.price.formatMoney(2)}</p>
-              {/* <p>${this.state.price}</p> */}
+              {/* <p>Market Price</p> */}
+              {/* <p>${this.state.price.formatMoney(2)}</p> */}
             </div>
 
             <div className='content-cost'>
               <p>Estimated Cost</p>
               <p>${this.state.cost}</p>
-            </div><br />
+            </div>
 
             <div className='content-errors'>
               <ul>

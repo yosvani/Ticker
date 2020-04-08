@@ -20,7 +20,7 @@ class Splash extends React.Component {
               Money
             </h1>
             <p>
-              Robinhood, a pioneer of commission-<br />
+              Ticker, a pioneer of commission-<br />
               free investing, gives you more ways<br /> 
               to make your money work harder.<br />
             </p>
@@ -31,8 +31,8 @@ class Splash extends React.Component {
         <div className="splash-bottom">
           <h1>Break Free from Commission Fees</h1><br />
           <h4>Make unlimited commission-free trades in stocks, funds, and options with<br />
-            Robinhood Financial. The same goes for buying and selling cryptocurrencies with<br /> 
-            Robinhood Crypto. Zero commission fees.</h4><br />
+            Ticker Financial. The same goes for buying and selling cryptocurrencies with<br /> 
+            Ticker Crypto. Zero commission fees.</h4><br />
           <div className="disclosure">
             <i className="fas fa-info-circle"> </i> 
             <h5>Commissions Disclosure</h5>

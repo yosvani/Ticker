@@ -18,7 +18,7 @@ class Api::TransactionsController < ApplicationController
     elsif @transaction.shares <= 0
       render json: ['Shares must be greater than 0'], status: 422
     elsif @transaction.shares > shares_owned && @transaction.order_type == 'sell'
-      render json: ['You Do Not Own Enough Shares'], status: 401
+      render json: ['Do Not Own Enough Shares'], status: 401
     else
       if @transaction.save
         render json: ['Success'], status: 200
