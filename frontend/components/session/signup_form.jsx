@@ -57,7 +57,7 @@ class SignUpForm extends React.Component {
           <h2>Make Your Money Move</h2>
           <br />
           <p>
-            Robinhood lets you invest in companies you love,<br />commission-free.
+            Ticker lets you invest in companies you love,<br />commission-free.
         </p>
           <form>
             <label>

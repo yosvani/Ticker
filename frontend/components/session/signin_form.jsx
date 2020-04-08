@@ -60,7 +60,7 @@ class SignInForm extends React.Component {
       <div className="signin-form">
         <img src={window.images.login} />
         <form onSubmit={this.handleSubmit} className="signin-form-content">
-          <h2>Welcome to Robinhood</h2>
+          <h2>Welcome to Ticker</h2>
           <div className="signin-form-text">
             <label>Email or username
               <br />
