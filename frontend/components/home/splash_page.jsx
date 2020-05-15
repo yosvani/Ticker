@@ -7,7 +7,6 @@ class Splash extends React.Component {
 
   demoUser() {
     localStorage.setItem('demoUser', 'true');
-    window.location.hash = "/login";
   };
 
   render() {

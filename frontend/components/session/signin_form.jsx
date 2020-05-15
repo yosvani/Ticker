@@ -15,7 +15,7 @@ class SignInForm extends React.Component {
   componentDidMount() {
     this.props.clearErrors();
     if (localStorage.getItem('demoUser') === 'true') {
-      delete localStorage.demoUser;
+      localStorage.removeItem('demoUser')
       this.handleDemo();
     }
   }
