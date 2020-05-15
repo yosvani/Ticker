@@ -15,7 +15,7 @@ class SignInForm extends React.Component {
   componentDidMount() {
     this.props.clearErrors();
     if (localStorage.getItem('demoUser') === 'true') {
-      localStorage.removeItem('demoUser');
+      delete localStorage.demoUser;
       this.handleDemo();
     }
   }
@@ -56,11 +56,6 @@ class SignInForm extends React.Component {
   }
 
   render() {
-
-    // if (localStorage.getItem('loading') === 'true') {
-    //   debugger
-    //   <div> hello</div>
-    // }
     return (
       <div className="signin-form">
         <img src={window.images.login} />
@@ -106,9 +101,7 @@ class SignInForm extends React.Component {
     const totalDemoTime = demoEmailTime + demoPasswordTime + buffer;
     this.demoEmail(email, intervalSpeed);
     setTimeout(() => this.demoPassword(password, intervalSpeed), demoEmailTime);
-    localStorage.setItem('loading', 'true');
     setTimeout(() => this.props.login(user), totalDemoTime)
-
   }
 
   demoEmail(email, intervalSpeed) {
