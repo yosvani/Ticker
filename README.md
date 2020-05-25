@@ -76,7 +76,7 @@ export const fetchAll = ticker => dispatch => {
     .then(stock => dispatch(receiveStock(stock)))
     .then(performFetches);
 };
-```<br />
+```
 
 ### Transaction Validation<br />
 Users may only purchase shares of stock if they have adequate buying power. Additionally, they may only sell as many shares as they own. These checks are handled by the transactions controller on the back-end, and the user will receive an error message if an invalid transaction is attempted.<br />
