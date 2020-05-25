@@ -80,7 +80,8 @@ A thunk `fetchStock` is used to perform these async API calls, ensuring nothing 
 ### Transaction Validation<br />
 Users may only purchase shares of stock if they have adequate buying power. Additionally, they may only sell as many shares as they own. These checks are handled by the transactions controller on the back-end, and the user will receive an error message if an invalid transaction is attempted.<br />
 
-```def create
+```
+def create
   @transaction = Transaction.new(transaction_params)
   @transaction.user_id = current_user.id
   @transaction.transaction_date = Time.now
@@ -99,4 +100,5 @@ Users may only purchase shares of stock if they have adequate buying power. Addi
       render json: @transaction.errors.full_messages, status: 422
     end
   end
-end```
+end
+```
