@@ -64,8 +64,8 @@ The function `calculateDailyPriceData` is used to calculate key price points tha
 
 ### Fetching Stock Data<br />
 A thunk `fetchStock` is used to perform these async API calls, ensuring nothing on the page is loaded until all of the information is received on the front-end. The fetchStock API Util fetches basic information about the stock, and adds its ticker to state, then a series of external API calls are made to fetch all additional information. As these calls do not rely upon each other, `Promise.all` is used to ensure resolving only occures after all fetches have completed.<br />
-
-`export const fetchAll = ticker => dispatch => {
+```
+export const fetchAll = ticker => dispatch => {
   const performFetches = () => Promise.all([
     dispatch(fetchIntraday(ticker)),
     dispatch(fetchCompanyInfo(ticker)),
@@ -75,11 +75,11 @@ A thunk `fetchStock` is used to perform these async API calls, ensuring nothing 
   StockApiUtil.fetchStock(ticker)
     .then(stock => dispatch(receiveStock(stock)))
     .then(performFetches);
-};`<br />
+};
+```<br />
 
 ### Transaction Validation<br />
 Users may only purchase shares of stock if they have adequate buying power. Additionally, they may only sell as many shares as they own. These checks are handled by the transactions controller on the back-end, and the user will receive an error message if an invalid transaction is attempted.<br />
-
 ```
 def create
   @transaction = Transaction.new(transaction_params)
