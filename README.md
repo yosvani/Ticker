@@ -27,7 +27,7 @@ Ticker is an investing application that allows users to purchase and sell shares
 Once a user logs in, they are redirected to their dashboard which displays the follwing:<br />
 * Chart of their portfolio balance<br />
 * List of stocks within their portfolio with real-time prices<br />
-* Current real-time market news<br /><br />
+* Current real-time market news<br />
 
 The function `calculateDailyPriceData` is used to calculate key price points that the chart needs to render appropriately including the current price, open price, high(max), low(min), price flux, and price flux percentage.<br />
 ```
