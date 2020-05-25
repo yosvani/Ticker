@@ -18,17 +18,15 @@ Ticker is an investing application that allows users to purchase and sell shares
 
 ![1](https://user-images.githubusercontent.com/56454897/82098147-36c1ad00-96b9-11ea-8c71-6f07c343c5a1.gif)<br />
 
-## Dashboard<br />
+## Dashboard & Portfolio<br />
 ![2](https://user-images.githubusercontent.com/56454897/78633620-ea33b800-7856-11ea-9fc9-161cae0796c5.gif)<br />
 
-## Portfolio<br />
 Once a user logs in, they are redirected to their dashboard which displays the follwing:<br />
 * Chart of their portfolio balance<br />
 * List of stocks within their portfolio with real-time prices<br />
 * Current real-time market news<br /><br />
 
 The function `calculateDailyPriceData` is used to calculate key price points that the chart needs to render appropriately including the current price, open price, high(max), low(min), price flux, and price flux percentage.<br />
-
 ```
 calculateDailyPriceData(data, startIdx) {
   let { dailyData } = this.state.initialData;
