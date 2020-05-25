@@ -24,7 +24,7 @@ Once a user logs in, they are redirected to their dashboard which displays the f
 * List of stocks within their portfolio with real-time prices<br />
 * Current real-time market news<br /><br />
 
-A thunk `fetchStock` is used to perform these async API calls, ensuring nothing on the page is loaded until all of the information is received on the front-end. The fetchStock API Util fetches basic information about the stock, and adds its ticker to state - this is done first, and then a series of external API calls are made to fetch all additional information. As these calls do not rely upon each other, Promise.all is used to perform all fetches at the same time, only resolving once all fetches have completed.
+A thunk `fetchStock` is used to perform these async API calls, ensuring nothing on the page is loaded until all of the information is received on the front-end. The fetchStock API Util fetches basic information about the stock, and adds its ticker to state, then a series of external API calls are made to fetch all additional information. As these calls do not rely upon each other, `Promise.all` is used to ensure resolving only occures after all fetches have completed.
 
 The function `calculateDailyPriceData` is used to calculate key price points that the chart needs to render appropriately including the current price, open price, high(max), low(min), price flux, and price flux percentage.<br />
 
@@ -62,7 +62,7 @@ The function `calculateDailyPriceData` is used to calculate key price points tha
 
 ### Transaction Validation
 ![3](https://user-images.githubusercontent.com/56454897/78633639-f455b680-7856-11ea-8c4e-38fc93fe13e6.gif)<br />
-Users may only purchase shares of stock if they have adequate buying power. Additionally, they may only sell as many shares as they own. These checks are handled by the transactions controller on the back-end, and the user will receive an error message if an invalid transaction is attempted.<br /><br />
+Users may only purchase shares of stock if they have adequate buying power. Additionally, they may only sell as many shares as they own. These checks are handled by the transactions controller on the back-end, and the user will receive an error message if an invalid transaction is attempted.<br />
 
 ```def create
   @transaction = Transaction.new(transaction_params)
