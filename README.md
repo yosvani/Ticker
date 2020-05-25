@@ -6,6 +6,9 @@ Ticker is an investing application that allows users to purchase and sell shares
 ## Technologies<br />
 * Backend: Rails/ActiveRecord/PostgreSQL<br />
 * Frontend: React/Redux<br />
+* Yahoo Finance API<br />
+* News API<br />
+* D3.js<br />
 
 ## Features<br />
 * Secure frontend and backend user authentication via BCrypt<br />
