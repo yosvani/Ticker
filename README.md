@@ -1,8 +1,20 @@
 # Ticker
 
-Ticker is an investing application that allows users to purchase and sell shares of stock in publicly-traded companies
+Ticker is an investing application that allows users to purchase and sell shares of stock in publicly-traded companies<br /><br />
+[Live Demo](http://tickerr.herokuapp.com/#/)<br /><br />   
 
-[Live Demo](http://tickerr.herokuapp.com/#/)   
+## Technologies<br />
+* Backend: Rails/ActiveRecord/PostgreSQL<br />
+* Frontend: React/Redux<br />
+
+## Features<br />
+* Secure frontend and backend user authentication via BCrypt<br />
+* Real-time and historical market price data of stocks on NASDAQ<br />
+* Interactive charts displaying stock price fluctuation over time, as well as user's portfolio balance fluctuation over time<br />
+* Dashboard displaying stock ownership and real-time market price of user's portfolio<br />
+* Ability to simulate real stock-market trades by buying and selling at the current market price<br />
+* Ability to search stocks by ticker symbol<br />
+* Relevant new displayed for market on home page, and for specific stock on the stock's show page<br />
 
 <br />
 
