@@ -36,6 +36,42 @@ class SignUpForm extends React.Component {
     });
     this.demo(user);
   }
+  
+  demo(user) {
+    const intervalSpeed = 75;
+    const { email, password } = user;
+    const demoEmailTime = email.length * intervalSpeed;
+    const demoPasswordTime = password.length * intervalSpeed;
+    const buffer = intervalSpeed * 2;
+    const totalDemoTime = demoEmailTime + demoPasswordTime + buffer;
+    this.demoEmail(email, intervalSpeed);
+    setTimeout(() => this.demoPassword(password, intervalSpeed), demoEmailTime);
+    setTimeout(() => this.props.loginForm(user), totalDemoTime)
+  }
+
+  demoEmail(email, intervalSpeed) {
+    let i = 0;
+    setInterval(() => {
+      if (i <= email.length) {
+        this.setState({ email: email.slice(0, i) })
+        i++
+      } else {
+        clearInterval()
+      }
+    }, intervalSpeed);
+  }
+
+  demoPassword(password, intervalSpeed) {
+    let j = 0;
+    setInterval(() => {
+      if (j <= password.length) {
+        this.setState({ password: password.slice(0, j) })
+        j++
+      } else {
+        clearInterval();
+      }
+    }, intervalSpeed);
+  }
 
   renderErrors() {
     return (
@@ -179,49 +215,6 @@ class SignUpForm extends React.Component {
   //     </div>
   //     </div>
   //   );
-
-
-
-
-
-
-
-
-  demo(user) {
-    const intervalSpeed = 75;
-    const { email, password } = user;
-    const demoEmailTime = email.length * intervalSpeed;
-    const demoPasswordTime = password.length * intervalSpeed;
-    const buffer = intervalSpeed * 2;
-    const totalDemoTime = demoEmailTime + demoPasswordTime + buffer;
-    this.demoEmail(email, intervalSpeed);
-    setTimeout(() => this.demoPassword(password, intervalSpeed), demoEmailTime);
-    setTimeout(() => this.props.loginForm(user), totalDemoTime)
-  }
-
-  demoEmail(email, intervalSpeed) {
-    let i = 0;
-    setInterval(() => {
-      if (i <= email.length) {
-        this.setState({ email: email.slice(0, i) })
-        i++
-      } else {
-        clearInterval()
-      }
-    }, intervalSpeed);
-  }
-
-  demoPassword(password, intervalSpeed) {
-    let j = 0;
-    setInterval(() => {
-      if (j <= password.length) {
-        this.setState({ password: password.slice(0, j) })
-        j++
-      } else {
-        clearInterval();
-      }
-    }, intervalSpeed);
-  }
 }
 
 
