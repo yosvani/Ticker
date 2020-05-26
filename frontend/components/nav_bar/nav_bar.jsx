@@ -86,7 +86,7 @@ class NavBar extends React.Component {
           <div className="personal-navbar-right">
             <div className="personal-links">
               <NavLink to="/" className="home"><p>Home</p></NavLink>
-              <NavLink to="/" className="logout" onClick={logout}><p>Logout</p></NavLink>
+              <NavLink to="/" replace className="logout" onClick={logout}><p>Logout</p></NavLink>
             </div>
           </div>
 
